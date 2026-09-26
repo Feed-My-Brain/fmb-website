@@ -1,0 +1,765 @@
+{
+  "slug": "data-science",
+  "title": "Data Science",
+  "shortTitle": "Data Science",
+  "tagline": "From raw data to decisions",
+  "summary": "In 20 weeks (5 months), students go from their first Python script to answering real business questions with data: cleaning messy datasets, writing SQL, running statistical tests and A/B tests, building dashboards, predicting and forecasting with ML, and presenting recommendations to decision-makers. Every project ends with a short written takeaway, because a data scientist's job is to help someone decide.",
+  "durationWeeks": 20,
+  "months": 5,
+  "hoursPerWeek": 6,
+  "totalHours": 120,
+  "projectsLabel": "19 + capstone",
+  "prerequisites": "None. No prior coding or statistics required; Class 12 maths is enough.",
+  "audience": "Undergraduate students from any branch. No prior coding or statistics required; Class 12 maths is enough.",
+  "format": "Two 90-minute theory + live-coding sessions and one 3-hour lab each week (about 6 contact hours per week, ~120 hours total), plus 3-4 hours of self-study and project work.",
+  "teamSize": "Weekly projects are individual; the Week 14 competition and the capstone are in teams of 2-4.",
+  "hardware": "Any laptop with 8 GB RAM. Google Colab and Kaggle notebooks work as fallbacks.",
+  "outcome": "A portfolio of 19 projects on GitHub / Kaggle, a public dashboard, and one capstone with a demo video.",
+  "learningOutcomes": [
+    "Write clean Python and use Pandas and NumPy to clean, reshape and combine real-world data from files, APIs and websites.",
+    "Query and design relational databases with SQL, including joins, CTEs and window functions.",
+    "Visualise data clearly and build interactive dashboards for business users.",
+    "Apply descriptive and inferential statistics, hypothesis tests, A/B tests and regression analysis correctly.",
+    "Build, evaluate and explain ML models for prediction, segmentation, recommendation and time-series forecasting.",
+    "Analyse text data (including with LLMs) and process large datasets with PySpark.",
+    "Deploy a model or dashboard, check it for bias and privacy risks, and communicate findings to non-technical audiences."
+  ],
+  "highlights": [
+    "Starts from zero: no prior coding or statistics required",
+    "19 portfolio projects plus a team capstone with demo video",
+    "Grading is 90% hands-on work, marked on analysis and communication",
+    "Runs on student laptops and free tiers; no paid software"
+  ],
+  "phases": [
+    {
+      "number": 1,
+      "title": "Python, data wrangling and SQL",
+      "weeks": "1-6",
+      "summary": "Most of a data scientist's time goes into getting and cleaning data. This phase builds fluent Python and Pandas, data collection from APIs and websites, and two weeks of SQL, the tool used in almost every data job and interview.",
+      "gate": "Load raw data into a database, clean it, and answer business questions with SQL and Pandas."
+    },
+    {
+      "number": 2,
+      "title": "Visualisation, statistics and analytics",
+      "weeks": "7-11",
+      "summary": "Students learn to explore data visually, tell real patterns from noise with statistics, design and analyse A/B tests, and present findings in dashboards and memos that decision-makers actually use.",
+      "gate": "Test a claim or experiment correctly and present results in a dashboard and a one-page memo."
+    },
+    {
+      "number": 3,
+      "title": "Machine learning and forecasting",
+      "weeks": "12-16",
+      "summary": "Students build, validate and explain the models businesses ask for most: prices, churn and risk, customer segments, recommendations and demand forecasts, always compared against a simple baseline.",
+      "gate": "Build, validate and explain a predictive or forecasting model that beats a sensible baseline."
+    },
+    {
+      "number": 4,
+      "title": "Specialisation, production and capstone",
+      "weeks": "17-20",
+      "summary": "Students analyse text (including with LLMs), process big data with PySpark, deploy models responsibly, and prepare for jobs while finishing the capstone.",
+      "gate": "Handle text and big data, deploy their work, and deliver a complete capstone."
+    }
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "phase": 1,
+      "title": "Python basics",
+      "outcomes": [
+        "Set up Python, Jupyter, Colab and Git.",
+        "Write programs with variables, conditionals, loops and functions.",
+        "Use AI coding assistants while understanding every line."
+      ],
+      "topics": [
+        "Course intro: what data scientists do, with real case studies",
+        "Installing Python 3.12+, Jupyter, VS Code; Google Colab",
+        "Variables, data types, strings, f-strings",
+        "Input and output",
+        "Conditionals and loops",
+        "Functions: parameters, return values, scope",
+        "Git and GitHub basics",
+        "Using AI coding assistants responsibly"
+      ],
+      "lab": "Pair-program a number-guessing game, then refactor it into functions. Push to GitHub.",
+      "project": {
+        "title": "Cricket scorecard analyser",
+        "brief": "Reads ball-by-ball data for an innings and reports runs, strike rates, boundaries and top performers.",
+        "deliverables": [
+          "At least 4 functions with clear names",
+          "Handles bad input lines without crashing",
+          "Summary printed as a neat table",
+          "Repo with README"
+        ],
+        "stretch": "Add a partnership analysis."
+      }
+    },
+    {
+      "week": 2,
+      "phase": 1,
+      "title": "Data structures, files, OOP and Git",
+      "outcomes": [
+        "Choose the right data structure for a problem.",
+        "Read and write CSV and JSON files.",
+        "Model problems with classes and dataclasses."
+      ],
+      "topics": [
+        "Lists, tuples, dictionaries, sets",
+        "Comprehensions",
+        "Reading / writing CSV and JSON",
+        "Exceptions and error handling",
+        "Classes, objects, methods; dataclasses",
+        "Modules and packages; virtual environments",
+        "Project structure",
+        "Git branches and pull requests"
+      ],
+      "lab": "Build a contact book with add / search / delete saved to JSON.",
+      "project": {
+        "title": "Student records manager",
+        "brief": "Add, search, update and summarise student records stored in CSV.",
+        "deliverables": [
+          "Student modelled as a class or dataclass",
+          "Data persists between runs",
+          "Summaries by department and year",
+          "Input validation"
+        ],
+        "stretch": "Export a summary report to JSON."
+      }
+    },
+    {
+      "week": 3,
+      "phase": 1,
+      "title": "NumPy and Pandas fundamentals",
+      "outcomes": [
+        "Use NumPy arrays and vectorised operations.",
+        "Load, select, filter and transform data with Pandas.",
+        "Aggregate and combine tables."
+      ],
+      "topics": [
+        "NumPy arrays, broadcasting, vectorised maths",
+        "Pandas Series and DataFrames; loading CSV / Excel",
+        "Selecting, filtering, sorting, new columns",
+        "groupby and aggregations",
+        "merge / join, concat",
+        "pivot_table, apply, string and date methods"
+      ],
+      "lab": "Answer 10 guided questions on a sales dataset using only Pandas.",
+      "project": {
+        "title": "Movies / OTT titles analysis",
+        "brief": "Answer 15 business questions about a streaming catalogue with Pandas.",
+        "deliverables": [
+          "Questions cover filtering, grouping, merging and dates",
+          "Each answer shown as a table or number",
+          "Takeaway paragraph for a content team",
+          "Notebook runs top to bottom"
+        ],
+        "stretch": "Add 3 charts (preview of Week 7)."
+      }
+    },
+    {
+      "week": 4,
+      "phase": 1,
+      "title": "Data cleaning and data collection",
+      "outcomes": [
+        "Clean messy real-world data systematically.",
+        "Collect data from APIs and websites ethically.",
+        "Move analyst work from Excel to Python."
+      ],
+      "topics": [
+        "Missing values, duplicates, wrong types, inconsistent text, outliers",
+        "Dates and times",
+        "Tidy data; melt and pivot; combining many files",
+        "Public APIs with requests; JSON to DataFrame",
+        "Web scraping with BeautifulSoup; robots.txt and ethics",
+        "Excel / Google Sheets for analysts: pivots, lookups; Excel vs Pandas"
+      ],
+      "lab": "Scrape a permitted public table (e.g. a Wikipedia list) and clean it into a DataFrame.",
+      "project": {
+        "title": "Messy-data clean-up",
+        "brief": "Clean a deliberately messy real dataset (e.g. Indian real-estate listings) and publish a tidy version.",
+        "deliverables": [
+          "Every cleaning step documented with reasons",
+          "Before / after quality checks (nulls, types, duplicates)",
+          "Data dictionary for every column",
+          "Clean file saved as CSV and Parquet"
+        ],
+        "stretch": "Write reusable cleaning functions with tests."
+      }
+    },
+    {
+      "week": 5,
+      "phase": 1,
+      "title": "SQL fundamentals",
+      "outcomes": [
+        "Explain tables, keys and relationships.",
+        "Filter, sort, aggregate and join data with SQL.",
+        "Translate business questions into queries."
+      ],
+      "topics": [
+        "Relational databases, primary and foreign keys",
+        "SQLite and PostgreSQL setup; DBeaver",
+        "SELECT, WHERE, ORDER BY, LIMIT, DISTINCT",
+        "CASE, NULL handling, LIKE, IN, BETWEEN",
+        "Aggregates: COUNT, SUM, AVG, MIN, MAX",
+        "GROUP BY and HAVING",
+        "INNER, LEFT and self joins",
+        "Reading query results critically"
+      ],
+      "lab": "SQL drill: 20 guided queries on a college database, checked against expected results.",
+      "project": {
+        "title": "E-commerce query set",
+        "brief": "Write 25 queries of increasing difficulty on an orders / customers / products database.",
+        "deliverables": [
+          "Covers filters, aggregates, GROUP BY / HAVING and 5+ joins",
+          "Each query answers a stated business question",
+          "One-line explanation and output for each",
+          "Saved as a .sql file"
+        ],
+        "stretch": "Solve 20 extra problems on an online SQL practice platform."
+      }
+    },
+    {
+      "week": 6,
+      "phase": 1,
+      "title": "Advanced SQL and SQL with Python",
+      "outcomes": [
+        "Use subqueries, CTEs and window functions.",
+        "Design a simple normalised database.",
+        "Combine SQL and Pandas in one workflow."
+      ],
+      "topics": [
+        "Subqueries and CTEs (WITH)",
+        "Window functions: ROW_NUMBER, RANK, LAG, running totals",
+        "Views; ER diagrams, normalisation, indexes",
+        "sqlite3, SQLAlchemy, pandas.read_sql",
+        "When to use SQL vs Pandas",
+        "Analyst patterns: cohorts, retention, funnels, month-over-month growth"
+      ],
+      "lab": "Timed practical SQL test (graded), then build a funnel query together.",
+      "project": {
+        "title": "Retail sales analysis (Phase 1 project)",
+        "brief": "Load raw CSVs into PostgreSQL and answer business questions with SQL and Pandas.",
+        "deliverables": [
+          "Schema designed and loaded from raw CSVs",
+          "10 business questions answered, including a cohort retention table",
+          "At least 3 queries use CTEs or window functions",
+          "One-page memo with 3 recommendations",
+          "5-minute presentation in lab"
+        ],
+        "stretch": "Automate the load with a Python script."
+      }
+    },
+    {
+      "week": 7,
+      "phase": 2,
+      "title": "Visualisation and EDA",
+      "outcomes": [
+        "Choose the right chart for a question.",
+        "Spot and fix misleading charts.",
+        "Run a structured exploratory analysis."
+      ],
+      "topics": [
+        "Principles: chart choice, colour, labels, clutter",
+        "Misleading charts: truncated axes, dual axes, 3D",
+        "Matplotlib and Seaborn",
+        "Interactive charts with Plotly",
+        "The EDA loop: questions -> charts -> insights",
+        "Maps and geo-visualisation basics"
+      ],
+      "lab": "Critique 10 real charts from the news in small groups.",
+      "project": {
+        "title": "Chart makeover + interactive EDA",
+        "brief": "Redesign 5 bad charts, then build an interactive EDA of an Indian open dataset (e.g. state-wise air quality).",
+        "deliverables": [
+          "Before / after for each makeover with reasons",
+          "At least 8 EDA charts, 3 interactive",
+          "10 written insights",
+          "Notebook published on Kaggle or GitHub"
+        ],
+        "stretch": "Add a choropleth map of India."
+      }
+    },
+    {
+      "week": 8,
+      "phase": 2,
+      "title": "Descriptive statistics and probability",
+      "outcomes": [
+        "Summarise data with the right statistics.",
+        "Reason with probability and conditional probability.",
+        "Recognise common distributions."
+      ],
+      "topics": [
+        "Mean, median, mode; spread, IQR, percentiles, skew",
+        "Box plots and outliers",
+        "Probability rules; conditional probability",
+        "Bayes' rule with real examples (medical tests, spam)",
+        "Binomial, Poisson, normal distributions; z-scores",
+        "Simulation with NumPy"
+      ],
+      "lab": "Simulate the birthday problem and a medical-test false-positive scenario.",
+      "project": {
+        "title": "IPL player consistency report",
+        "brief": "Rank batters and bowlers on consistency, not just averages, using descriptive statistics.",
+        "deliverables": [
+          "At least 4 statistics used and justified",
+          "Distributions visualised per player",
+          "Consistency ranking with a clear method",
+          "Takeaway for a team selector"
+        ],
+        "stretch": "Estimate win probability for common match situations."
+      }
+    },
+    {
+      "week": 9,
+      "phase": 2,
+      "title": "Inferential statistics",
+      "outcomes": [
+        "Explain sampling and the central limit theorem.",
+        "Build and interpret confidence intervals.",
+        "Run and interpret common hypothesis tests."
+      ],
+      "topics": [
+        "Populations, samples, sampling distributions",
+        "Central limit theorem by simulation",
+        "Confidence intervals; bootstrapping",
+        "Hypothesis testing: null, alternative, p-values",
+        "t-tests, chi-square, ANOVA",
+        "Errors, power, statistical vs practical significance, p-hacking"
+      ],
+      "lab": "Bootstrap a confidence interval and compare with the formula.",
+      "project": {
+        "title": "Test five claims with data",
+        "brief": "Test real claims (e.g. 'students with coaching score higher', 'weekend sales are higher').",
+        "deliverables": [
+          "Correct test chosen and assumptions checked",
+          "Effect sizes and confidence intervals reported",
+          "Plain-English verdict for each claim",
+          "Limitations stated"
+        ],
+        "stretch": "Apply a multiple-testing correction and discuss the change."
+      }
+    },
+    {
+      "week": 10,
+      "phase": 2,
+      "title": "A/B testing and regression analysis",
+      "outcomes": [
+        "Design and analyse an A/B test.",
+        "Separate correlation from causation.",
+        "Fit and interpret regression models."
+      ],
+      "topics": [
+        "Experiment design: metrics, randomisation, sample size, duration",
+        "Analysing A/B tests",
+        "Pitfalls: peeking, novelty effect, Simpson's paradox",
+        "Correlation vs causation; confounders",
+        "Linear and multiple regression with statsmodels",
+        "Interpreting coefficients; dummy variables; checking residuals"
+      ],
+      "lab": "Calculate required sample sizes for three experiment scenarios.",
+      "project": {
+        "title": "A/B test and pricing analysis",
+        "brief": "Analyse a website A/B test and estimate how price and discounts affect sales.",
+        "deliverables": [
+          "Ship / don't ship recommendation with evidence",
+          "Sample-size and power check",
+          "Regression with interpreted coefficients",
+          "Memo written for a product manager"
+        ],
+        "stretch": "Check the A/B result separately for mobile and desktop users."
+      }
+    },
+    {
+      "week": 11,
+      "phase": 2,
+      "title": "Dashboards, BI and data storytelling",
+      "outcomes": [
+        "Design useful KPIs and dashboards.",
+        "Build a dashboard in a BI tool or Streamlit.",
+        "Present findings to non-technical audiences."
+      ],
+      "topics": [
+        "KPI and metric design",
+        "Dashboard layout principles",
+        "Power BI or Tableau Public: data model, visuals, filters",
+        "Streamlit dashboards in Python",
+        "Data storytelling: structure of a memo and a presentation",
+        "Presenting uncertainty honestly"
+      ],
+      "lab": "Build a 1-page KPI dashboard from the Phase 1 retail database.",
+      "project": {
+        "title": "Business dashboard + memo (Phase 2 project)",
+        "brief": "Build an interactive KPI dashboard for a business dataset (e.g. food delivery or retail chain) and a memo to the 'CEO'.",
+        "deliverables": [
+          "5-8 well-chosen KPIs with filters",
+          "Published dashboard link",
+          "One-page memo with 3 recommendations",
+          "At least one statistical test supports a recommendation",
+          "5-minute presentation"
+        ],
+        "stretch": "Add a 'what-if' control (e.g. discount level)."
+      }
+    },
+    {
+      "week": 12,
+      "phase": 3,
+      "title": "ML fundamentals and regression",
+      "outcomes": [
+        "Explain how supervised learning works and generalises.",
+        "Train and evaluate regression models.",
+        "Always compare against a baseline."
+      ],
+      "topics": [
+        "Supervised vs unsupervised learning",
+        "Train / validation / test splits; overfitting; bias-variance",
+        "Linear regression with gradient descent from scratch (once)",
+        "scikit-learn API: fit, predict, score",
+        "Metrics: MAE, RMSE, R²; baselines",
+        "Ridge and Lasso"
+      ],
+      "lab": "Fit models of increasing complexity and plot training vs validation error.",
+      "project": {
+        "title": "Used-car price predictor",
+        "brief": "Predict used-car prices (e.g. CarDekho data) and explain what drives price.",
+        "deliverables": [
+          "Baseline model and at least 2 better models",
+          "Proper train / test split, no leakage",
+          "RMSE and R² reported",
+          "Feature effects explained for a car dealer"
+        ],
+        "stretch": "Build a simple price-check web form."
+      }
+    },
+    {
+      "week": 13,
+      "phase": 3,
+      "title": "Classification and metrics",
+      "outcomes": [
+        "Train and compare classifiers.",
+        "Choose metrics and thresholds using business costs.",
+        "Handle imbalanced classes."
+      ],
+      "topics": [
+        "Logistic regression",
+        "k-nearest neighbours and decision trees",
+        "Confusion matrix, precision, recall, F1",
+        "ROC-AUC and precision-recall curves",
+        "Class imbalance: class weights, resampling",
+        "Choosing thresholds from costs and benefits"
+      ],
+      "lab": "Build a cost-based threshold chooser for a loan example.",
+      "project": {
+        "title": "Customer churn predictor",
+        "brief": "Predict telecom churn and recommend which customers to target for retention.",
+        "deliverables": [
+          "3+ models compared",
+          "Threshold chosen using stated business costs",
+          "Top churn drivers explained",
+          "Targeting recommendation with expected savings"
+        ],
+        "stretch": "Estimate the profit of the retention campaign."
+      }
+    },
+    {
+      "week": 14,
+      "phase": 3,
+      "title": "Ensembles, feature engineering and explainability",
+      "outcomes": [
+        "Use random forests and gradient boosting.",
+        "Engineer features and build pipelines.",
+        "Explain models and avoid leakage."
+      ],
+      "topics": [
+        "Random forests",
+        "Gradient boosting: XGBoost, LightGBM",
+        "Feature engineering: encoding, dates, aggregates",
+        "Pipelines, cross-validation, Optuna tuning",
+        "Feature importance and SHAP",
+        "Data leakage: spotting and preventing it"
+      ],
+      "lab": "Competition kick-off: explore the data and submit a baseline.",
+      "project": {
+        "title": "In-class Kaggle-style competition (teams)",
+        "brief": "Teams compete on a private leaderboard (e.g. credit default).",
+        "deliverables": [
+          "At least 5 leaderboard submissions",
+          "Pipeline with cross-validation",
+          "SHAP explanation of the final model",
+          "Top teams present their approach"
+        ],
+        "stretch": "Try model stacking."
+      }
+    },
+    {
+      "week": 15,
+      "phase": 3,
+      "title": "Unsupervised learning and recommendations",
+      "outcomes": [
+        "Segment customers with clustering.",
+        "Reduce dimensions with PCA.",
+        "Build simple recommenders."
+      ],
+      "topics": [
+        "k-means, hierarchical, DBSCAN; choosing k",
+        "RFM analysis (recency, frequency, monetary)",
+        "PCA for visualisation and compression",
+        "Recommenders: popularity, content-based, collaborative filtering",
+        "Market-basket analysis (association rules)",
+        "Evaluating recommendations"
+      ],
+      "lab": "Market-basket analysis on grocery transactions.",
+      "project": {
+        "title": "Segmentation + product recommender",
+        "brief": "Segment e-commerce customers and build a 'customers also bought' recommender.",
+        "deliverables": [
+          "RFM features + clustering with profiles",
+          "PCA visualisation of segments",
+          "Recommender with a simple evaluation",
+          "Marketing plan per segment"
+        ],
+        "stretch": "Add a cold-start strategy for new users."
+      }
+    },
+    {
+      "week": 16,
+      "phase": 3,
+      "title": "Time-series analysis and forecasting",
+      "outcomes": [
+        "Decompose time series into trend and seasonality.",
+        "Forecast with statistical and ML methods.",
+        "Validate forecasts correctly over time."
+      ],
+      "topics": [
+        "Trend, seasonality, stationarity; decomposition",
+        "Moving averages, exponential smoothing",
+        "ARIMA / SARIMA",
+        "Prophet; ML forecasting with lag features",
+        "Time-based validation (no shuffling)",
+        "Forecast accuracy: MAE, MAPE; prediction intervals"
+      ],
+      "lab": "Forecast a festival-season sales spike and discuss what the model misses.",
+      "project": {
+        "title": "Retail demand forecast (Phase 3 project)",
+        "brief": "Forecast store or product demand for the next 8 weeks and recommend inventory levels.",
+        "deliverables": [
+          "Naive baseline + 3 methods compared",
+          "Time-based validation",
+          "Prediction intervals shown",
+          "Inventory recommendation with risks",
+          "Capstone proposal submitted (1 page)"
+        ],
+        "stretch": "Add holiday and weather effects."
+      }
+    },
+    {
+      "week": 17,
+      "phase": 4,
+      "title": "Text analytics, NLP and LLMs for data work",
+      "outcomes": [
+        "Turn text into features and insights.",
+        "Use embeddings and LLMs to label and analyse text.",
+        "Check AI-generated labels and code for accuracy."
+      ],
+      "topics": [
+        "Text cleaning, tokenisation, TF-IDF",
+        "Sentiment analysis",
+        "Topic modelling",
+        "Sentence embeddings for search and clustering",
+        "LLM APIs for labelling, extraction, summarisation",
+        "Measuring LLM label accuracy against human labels"
+      ],
+      "lab": "Label 100 reviews by hand and compare with an LLM's labels.",
+      "project": {
+        "title": "Review sentiment and topic analysis",
+        "brief": "Analyse thousands of product or app reviews for sentiment trends and complaint topics.",
+        "deliverables": [
+          "Sentiment trend over time",
+          "Top complaint topics with examples",
+          "LLM vs model labels compared on a human-labelled sample",
+          "Recommendations for the product team"
+        ],
+        "stretch": "Build a searchable review explorer with embeddings."
+      }
+    },
+    {
+      "week": 18,
+      "phase": 4,
+      "title": "Big data and data engineering basics",
+      "outcomes": [
+        "Process data larger than memory.",
+        "Use PySpark and Spark SQL.",
+        "Explain the modern data stack."
+      ],
+      "topics": [
+        "Chunking, Parquet, DuckDB",
+        "Why distributed computing; Spark architecture",
+        "PySpark DataFrames",
+        "Spark SQL; joins and aggregations at scale",
+        "Cloud warehouses (BigQuery sandbox)",
+        "ETL / ELT, dbt and Airflow (overview)"
+      ],
+      "lab": "Compare Pandas, DuckDB and PySpark on the same large file.",
+      "project": {
+        "title": "PySpark pipeline",
+        "brief": "Clean and aggregate a multi-million-row dataset (e.g. NYC taxi trips or Indian railways data).",
+        "deliverables": [
+          "Pipeline reads raw data and writes summary tables to Parquet",
+          "At least 5 transformations and 3 aggregations",
+          "Runtime and data sizes reported",
+          "Short insights from the summary tables"
+        ],
+        "stretch": "Schedule the pipeline to run daily."
+      }
+    },
+    {
+      "week": 19,
+      "phase": 4,
+      "title": "Deployment, monitoring, ethics and privacy",
+      "outcomes": [
+        "Deploy a model as an API or app.",
+        "Track experiments and monitor for drift.",
+        "Check work for bias and privacy risks."
+      ],
+      "topics": [
+        "Saving models; FastAPI prediction endpoints",
+        "Streamlit apps; Hugging Face Spaces",
+        "MLflow experiment tracking",
+        "Monitoring and data drift",
+        "Bias and fairness checks; explainability",
+        "Privacy and India's DPDP Act basics; anonymisation"
+      ],
+      "lab": "Run a fairness check on the Week 13 churn model across customer groups.",
+      "project": {
+        "title": "Deployed model with model card",
+        "brief": "Deploy a Phase 3 model as an API or app for others to use.",
+        "deliverables": [
+          "Public API or app with input validation",
+          "Logging of requests and predictions",
+          "Fairness check across at least one group",
+          "Model card with limits and intended use"
+        ],
+        "stretch": "Add a drift report comparing new data with training data."
+      }
+    },
+    {
+      "week": 20,
+      "phase": 4,
+      "title": "Portfolio, careers and demo day",
+      "outcomes": [
+        "Package work into a job-ready portfolio.",
+        "Prepare for data science interviews.",
+        "Present a capstone to a panel."
+      ],
+      "topics": [
+        "Portfolio: GitHub, Kaggle, blog posts, LinkedIn",
+        "Roles: data analyst, data scientist, ML engineer, analytics engineer",
+        "Interview prep: SQL tests, statistics questions, case studies, take-homes",
+        "Demo day"
+      ],
+      "lab": "Final dry runs, then demo day.",
+      "project": null
+    }
+  ],
+  "capstone": {
+    "summary": "Teams of 2-4 take a real business or social question from raw data to a recommendation backed by analysis, a model and a dashboard, worth 35% of the final grade. Minimum requirements: real data from at least two sources stored and queried with SQL; a statistical analysis (hypothesis test, A/B test or regression) and a predictive or forecasting model that beats a baseline; an interactive dashboard or app; a written recommendation for a named decision-maker with limitations stated; and a GitHub repo with README, model card, fairness and privacy notes and a demo video. Teams may propose their own idea if it meets the minimum requirements.",
+    "ideas": [
+      "UPI / card fraud detection: Which transactions should be flagged for review? (Imbalanced classification, thresholds, SHAP)",
+      "Crop yield and price forecasting: What will yield and mandi prices look like next season? (Time series, weather APIs, dashboards)",
+      "College placement analytics: What predicts placements, and what should the college change? (SQL, statistics, classification)",
+      "Air-quality forecasting: When will AQI cross unsafe levels in a city? (Time series, live data, alerts)",
+      "E-commerce personalisation: Which products should each customer segment see? (Clustering, recommenders, A/B design)",
+      "Real-estate price analytics: Is this flat fairly priced for its area? (Scraping, regression, maps)",
+      "Public transport ridership: Where and when should a city add buses or metro trips? (Big data, PySpark, forecasting)",
+      "IPL match analytics: Which strategies and player picks improve win chances? (Statistics, ML, storytelling)"
+    ],
+    "milestones": [
+      {
+        "week": "16",
+        "item": "Proposal: question, stakeholders, data sources and licences, success metric. Instructor approval required."
+      },
+      {
+        "week": "17",
+        "item": "Data ready: collected and cleaned data in a database, data dictionary, EDA."
+      },
+      {
+        "week": "18",
+        "item": "Analysis and model: statistical analysis or test, a model that beats a baseline, error analysis."
+      },
+      {
+        "week": "19",
+        "item": "Deployed: dashboard or app live, model card, fairness and privacy notes."
+      },
+      {
+        "week": "20",
+        "item": "Demo day: 10-minute presentation + 5-minute Q&A; final report, repo and demo video (up to 5 min)."
+      }
+    ]
+  },
+  "assessment": [
+    {
+      "component": "Weekly projects (16 non-phase weeks, about 1.6% each)",
+      "weight": "25%"
+    },
+    {
+      "component": "Phase projects (Weeks 6, 11 and 16, 10% each)",
+      "weight": "30%"
+    },
+    {
+      "component": "Tests (timed SQL test in Week 6, statistics and ML concept quizzes)",
+      "weight": "10%"
+    },
+    {
+      "component": "Capstone (proposal 5%, analysis/model/dashboard 15%, final report 5%, demo day 10%)",
+      "weight": "35%"
+    }
+  ],
+  "tools": [
+    "Python 3.12+",
+    "Jupyter",
+    "VS Code",
+    "Google Colab",
+    "Git / GitHub",
+    "NumPy",
+    "Pandas",
+    "requests",
+    "BeautifulSoup",
+    "Excel / Google Sheets",
+    "SQLite",
+    "PostgreSQL",
+    "DBeaver",
+    "SQLAlchemy",
+    "DuckDB",
+    "Matplotlib",
+    "Seaborn",
+    "Plotly",
+    "Power BI Desktop or Tableau Public",
+    "Streamlit",
+    "SciPy",
+    "statsmodels",
+    "scikit-learn",
+    "XGBoost",
+    "LightGBM",
+    "Optuna",
+    "SHAP",
+    "Prophet",
+    "sentence-transformers",
+    "LLM API (or a local open model via Ollama)",
+    "PySpark",
+    "Parquet",
+    "BigQuery sandbox",
+    "dbt and Airflow (overview)",
+    "FastAPI",
+    "Hugging Face Spaces",
+    "MLflow",
+    "Kaggle"
+  ],
+  "policies": [
+    "AI coding tools are allowed and encouraged; students must verify results and explain every query, test and chart they submit.",
+    "Sharing ideas is fine; copying another student's repository is not. Cite any code, tutorial or template used.",
+    "Use data you have the right to use, document licences, respect robots.txt and never publish personal data.",
+    "Late work: 10% penalty per day, up to 3 days; phase projects and demo day need prior approval to be late.",
+    "At least 80% lab attendance is required to be eligible for the capstone.",
+    "Analyses must not be presented as financial, medical or legal advice; report uncertainty and limitations honestly."
+  ],
+  "defaultPrice": 4999,
+  "sort": 3
+}

@@ -1,0 +1,666 @@
+{
+  "slug": "agentic-ai",
+  "title": "From Python to Real-Time AI Agents",
+  "shortTitle": "Agentic AI Development",
+  "tagline": "A hands-on course for college students: Python, SQL, LLMs and agents, ending in a deployed, streaming, tool-using AI agent.",
+  "summary": "In 16 weeks (4 months), students go from writing their first Python script to shipping a deployed, real-time AI agent that streams responses, uses tools and databases, remembers context and handles voice or live data. The course is project-first: every week ends with something working on GitHub, and the final four weeks run alongside a team capstone.",
+  "durationWeeks": 16,
+  "months": 4,
+  "hoursPerWeek": 6,
+  "totalHours": 96,
+  "projectsLabel": "15 + capstone",
+  "prerequisites": "None. No prior Python or SQL required; basic computer literacy and logical thinking expected.",
+  "audience": "Undergraduate students from any branch (CSE, IT, ECE, EEE, Mech, Science). No prior Python or SQL required; basic computer literacy and logical thinking expected.",
+  "format": "Two 90-minute theory + live-coding sessions and one 3-hour lab each week, plus 3-4 hours of self-study and project work.",
+  "teamSize": "Weekly projects are individual. Phase 3 project and capstone are in teams of 2-4.",
+  "hardware": "Any laptop with 8 GB RAM (16 GB recommended for running local models). Google Colab and hosted Postgres work as fallbacks.",
+  "outcome": "A portfolio of 15 GitHub projects and one deployed capstone agent with a demo video.",
+  "learningOutcomes": [
+    "Write clean, modular, typed and asynchronous Python, and work with files and web APIs.",
+    "Design relational databases and write SQL (joins, aggregates, subqueries, CTEs, window functions), and use PostgreSQL safely from Python.",
+    "Explain how large language models work, their strengths and their limits (hallucination, context windows, cost).",
+    "Use LLM APIs with effective prompting, structured outputs and tool (function) calling.",
+    "Build retrieval-augmented generation (RAG) systems over their own documents, including with pgvector.",
+    "Implement an agent loop from scratch and with frameworks, adding memory, planning and human-in-the-loop checks.",
+    "Connect agents to tools and databases through MCP, including safe text-to-SQL agents, and coordinate multiple agents.",
+    "Build real-time agents using streaming, WebSockets, event triggers and voice.",
+    "Evaluate, secure, observe and deploy an agent as a live web service."
+  ],
+  "highlights": [
+    "No prerequisites: first Python script to deployed AI agent",
+    "Project-first: every week ends with something working on GitHub",
+    "Two full weeks of SQL, reused with PostgreSQL throughout",
+    "Team capstone: a deployed, real-time, tool-using agent with demo video"
+  ],
+  "phases": [
+    {
+      "number": 1,
+      "title": "Python and data foundations",
+      "weeks": "1-5",
+      "summary": "Every agent is ultimately Python calling APIs and reading or writing data. This phase gives students solid, modern Python (functions, classes, files, typed models, HTTP APIs, async, FastAPI) and two full weeks of SQL: querying, database design and using PostgreSQL safely from Python.",
+      "gate": "Design a normalised schema and build a FastAPI + PostgreSQL service with CRUD and reports written in SQL."
+    },
+    {
+      "number": 2,
+      "title": "LLM foundations",
+      "weeks": "6-8",
+      "summary": "Students learn what LLMs can and cannot do, and how to make them reliable building blocks: well-designed prompts, validated structured outputs, tool calling (including a safe database tool), and retrieval over their own documents with pgvector.",
+      "gate": "Build a chatbot that calls tools (including a safe database tool) and answers from their own documents with citations."
+    },
+    {
+      "number": 3,
+      "title": "Building agents",
+      "weeks": "9-12",
+      "summary": "Students first build an agent loop by hand so nothing is magic, then move to frameworks and open protocols to build agents that plan, remember (in Postgres), use MCP tools, answer questions over databases with text-to-SQL, and collaborate, with humans approving risky actions.",
+      "gate": "Build a multi-step agent with memory and MCP tools, including safe text-to-SQL, and explain every step it takes."
+    },
+    {
+      "number": 4,
+      "title": "Real-time agents and production",
+      "weeks": "13-16",
+      "summary": "Agents become live: streaming responses, WebSockets, event triggers, voice and live data. The phase covers evaluation, safety, observability and deployment, and ends with capstone demo day.",
+      "gate": "Deploy a real-time agent with streaming, a database, an evaluation report and basic safety controls."
+    }
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "phase": 1,
+      "title": "Python basics",
+      "outcomes": [
+        "Set up a professional Python environment with Git.",
+        "Write programs using variables, conditionals, loops and functions.",
+        "Use AI coding assistants while still understanding every line."
+      ],
+      "topics": [
+        "Course intro: what AI agents are and what students will build",
+        "Installing Python 3.12+, VS Code, virtual environments (venv / uv)",
+        "Variables, data types (int, float, str, bool), operators",
+        "Strings and f-strings; input and output",
+        "Conditionals (if / elif / else) and loops (for, while, break, continue)",
+        "Functions: parameters, default arguments, return values, scope",
+        "Git and GitHub basics: init, commit, push, README",
+        "Using AI coding assistants responsibly: read, test, explain"
+      ],
+      "lab": "Pair-program a number-guessing game, then refactor it into functions. Push to GitHub.",
+      "project": {
+        "title": "CLI quiz game",
+        "brief": "A terminal quiz that loads 10+ questions, asks them in random order, tracks score and shows a final result with percentage.",
+        "deliverables": [
+          "Questions stored in a Python list of dictionaries",
+          "At least 4 functions (load, ask, score, show result)",
+          "Handles invalid input without crashing",
+          "Repo with README and run instructions"
+        ],
+        "stretch": "Add difficulty levels and a high-score file."
+      }
+    },
+    {
+      "week": 2,
+      "phase": 1,
+      "title": "Data structures, files and OOP",
+      "outcomes": [
+        "Choose the right data structure for a problem.",
+        "Read and write CSV and JSON files safely.",
+        "Model a problem with classes, dataclasses and Pydantic."
+      ],
+      "topics": [
+        "Lists, tuples, dictionaries, sets; list and dict comprehensions",
+        "Reading / writing text, CSV and JSON files",
+        "Exceptions: try / except / finally, raising your own errors",
+        "Modules, packages and pip",
+        "Classes, objects, methods, inheritance",
+        "Dataclasses and type hints",
+        "Pydantic models for data validation (used heavily with LLMs later)",
+        "Project structure: splitting code across files"
+      ],
+      "lab": "Build a contact book with add / search / delete, saved to JSON, using a Contact dataclass.",
+      "project": {
+        "title": "Personal expense tracker",
+        "brief": "A command-line app to add, list, filter and summarise expenses by category and month.",
+        "deliverables": [
+          "Expense modelled as a class or Pydantic model",
+          "Data persists to JSON or CSV between runs",
+          "Monthly and per-category summaries",
+          "Input validation with clear error messages"
+        ],
+        "stretch": "Export a monthly chart with matplotlib. (This app is rebuilt on a database in Week 5.)"
+      }
+    },
+    {
+      "week": 3,
+      "phase": 1,
+      "title": "APIs, async and web basics",
+      "outcomes": [
+        "Call REST APIs and parse JSON responses.",
+        "Manage secrets safely with environment variables.",
+        "Use async / await for concurrent requests and build a FastAPI service."
+      ],
+      "topics": [
+        "How the web works: HTTP methods, status codes, headers, JSON",
+        "Calling APIs with requests / httpx; API keys and rate limits",
+        "Environment variables and .env files; never commit secrets",
+        "Reading API documentation",
+        "async / await and asyncio: why agents need concurrency",
+        "Running API calls in parallel with asyncio.gather",
+        "FastAPI: routes, path/query parameters, Pydantic request/response models",
+        "Auto-generated API docs (Swagger UI)"
+      ],
+      "lab": "Build a FastAPI endpoint that returns a random joke from a public API, then make two calls concurrently.",
+      "project": {
+        "title": "Weather + news API service",
+        "brief": "A FastAPI service that, given a city, fetches current weather and top headlines concurrently and returns combined JSON. Optional simple HTML page.",
+        "deliverables": [
+          "Two external APIs called concurrently with async",
+          "API keys loaded from .env (not in the repo)",
+          "Errors from either API handled gracefully",
+          "Swagger docs work for every endpoint"
+        ],
+        "stretch": "Add simple in-memory caching for repeat requests."
+      }
+    },
+    {
+      "week": 4,
+      "phase": 1,
+      "title": "SQL fundamentals",
+      "outcomes": [
+        "Explain tables, rows, keys and how relational databases store data.",
+        "Write SQL to filter, sort, aggregate and combine data across tables.",
+        "Insert, update and delete data safely."
+      ],
+      "topics": [
+        "Why databases: tables, rows, columns, primary and foreign keys; relational vs NoSQL",
+        "Setup: SQLite and PostgreSQL; DBeaver or pgAdmin",
+        "SELECT, WHERE, ORDER BY, LIMIT, DISTINCT",
+        "LIKE, IN, BETWEEN, NULL handling, CASE expressions",
+        "Aggregates: COUNT, SUM, AVG, MIN, MAX",
+        "GROUP BY and HAVING",
+        "Joins: INNER, LEFT, RIGHT, FULL, self joins",
+        "INSERT, UPDATE, DELETE; why WHERE matters on UPDATE / DELETE"
+      ],
+      "lab": "SQL drill with a sample college database: 20 guided queries, from simple filters to multi-table joins, checked against expected results.",
+      "project": {
+        "title": "College database query set",
+        "brief": "Given a students / courses / enrollments / marks / attendance database, write 25 queries of increasing difficulty and document what each one answers.",
+        "deliverables": [
+          "Queries cover filters, sorting, aggregates, GROUP BY / HAVING and at least 5 joins",
+          "Answers business-style questions (e.g. toppers per course, attendance shortfalls, department averages)",
+          "Each query has a one-line explanation and its output",
+          "Queries saved as a .sql file in the repo"
+        ],
+        "stretch": "Solve 20 extra problems on an online SQL practice platform."
+      }
+    },
+    {
+      "week": 5,
+      "phase": 1,
+      "title": "Database design, advanced SQL and PostgreSQL from Python",
+      "outcomes": [
+        "Design a normalised schema from a real-world problem.",
+        "Use subqueries, CTEs, window functions, indexes and transactions.",
+        "Connect Python and FastAPI to PostgreSQL safely."
+      ],
+      "topics": [
+        "Schema design: entities, ER diagrams, one-to-many and many-to-many",
+        "Normalisation (1NF-3NF), constraints (NOT NULL, UNIQUE, CHECK, FOREIGN KEY)",
+        "Subqueries, CTEs (WITH), views",
+        "Window functions: ROW_NUMBER, RANK, running totals",
+        "Indexes and EXPLAIN; transactions and ACID basics",
+        "Python + SQL: sqlite3, psycopg, SQLAlchemy ORM",
+        "Parameterised queries and SQL injection (live demo of an attack and the fix)",
+        "FastAPI + PostgreSQL; Alembic migrations (intro)"
+      ],
+      "lab": "Design the schema for a small online store as an ER diagram, create it in PostgreSQL and load sample data from CSV.",
+      "project": {
+        "title": "Canteen / library management API (Phase 1 project)",
+        "brief": "Design the database, then build a FastAPI + PostgreSQL service with full CRUD and reports built in SQL.",
+        "deliverables": [
+          "ER diagram and schema in at least 3NF with constraints",
+          "CRUD endpoints using parameterised queries or SQLAlchemy",
+          "At least 3 report endpoints using joins, CTEs or window functions (e.g. top items, overdue books)",
+          "Seed script with realistic sample data",
+          "Live 5-minute demo in lab"
+        ],
+        "stretch": "Add login with hashed passwords and role-based access (student / admin)."
+      }
+    },
+    {
+      "week": 6,
+      "phase": 2,
+      "title": "How LLMs work and prompt engineering",
+      "outcomes": [
+        "Explain tokens, context windows and next-token prediction.",
+        "Call an LLM API with system prompts and multi-turn chat.",
+        "Write prompts that produce reliable, well-structured output."
+      ],
+      "topics": [
+        "Intuition for transformers: tokens, embeddings, attention (no heavy maths)",
+        "Context windows, temperature, top-p, max tokens",
+        "Model landscape: hosted APIs (Claude, GPT, Gemini) vs open models (Llama, Qwen, Mistral) via Ollama",
+        "Cost, latency and privacy trade-offs",
+        "LLM API basics: messages, roles, system prompts, multi-turn history",
+        "Prompt engineering: clear instructions, few-shot examples, roles, step-by-step reasoning, XML / Markdown structure",
+        "Limits: hallucination, bias, knowledge cutoffs",
+        "Streaming a response (preview of Phase 4)"
+      ],
+      "lab": "Prompt-off: teams improve a weak prompt through 5 iterations and measure output quality against a checklist.",
+      "project": {
+        "title": "Prompt-powered study assistant",
+        "brief": "A Streamlit or CLI app where students paste notes; it summarises them, generates flashcards and quizzes the user.",
+        "deliverables": [
+          "At least 3 distinct prompt templates",
+          "Multi-turn conversation history saved in SQLite",
+          "Works with a hosted API or a local Ollama model",
+          "README documents prompt design choices"
+        ],
+        "stretch": "Let the user upload a PDF and study from it."
+      }
+    },
+    {
+      "week": 7,
+      "phase": 2,
+      "title": "Structured outputs and tool calling",
+      "outcomes": [
+        "Get validated JSON from an LLM using schemas.",
+        "Define tools and let the model choose when to call them.",
+        "Expose a database to an LLM safely as a tool."
+      ],
+      "topics": [
+        "Structured / JSON outputs; validating with Pydantic",
+        "Why structure matters for building software on top of LLMs",
+        "Token counting, cost estimation, rate limits and caching",
+        "Function (tool) calling: tool schemas, model picks a tool, you run it, return results",
+        "Writing good tool names and descriptions; multi-step tool calls",
+        "A database as a tool: safe, parameterised query functions (not raw SQL) over a read-only connection",
+        "Error handling and retries"
+      ],
+      "lab": "Build an 'extract to JSON' tool that turns messy job descriptions into structured records and inserts them into Postgres.",
+      "project": {
+        "title": "Tool-using assistant",
+        "brief": "A chatbot with a calculator, live weather lookup and read-only tools over the Phase 1 database (e.g. 'which items sold most this week?'); the model decides which tool (if any) to use.",
+        "deliverables": [
+          "At least 3 tools with JSON schemas, including 2 database tools",
+          "Database tools use a read-only user and parameterised queries",
+          "Correct tool chosen on a 15-question test set (report the score)",
+          "Logs every tool call with inputs and outputs"
+        ],
+        "stretch": "Add a currency converter using a live exchange-rate API."
+      }
+    },
+    {
+      "week": 8,
+      "phase": 2,
+      "title": "Embeddings, vector databases and RAG",
+      "outcomes": [
+        "Explain embeddings and semantic search.",
+        "Build a full RAG pipeline with citations using pgvector.",
+        "Measure and improve retrieval quality."
+      ],
+      "topics": [
+        "Embeddings and cosine similarity",
+        "Chunking strategies and metadata",
+        "Vector databases: Chroma, Qdrant and pgvector",
+        "pgvector: vector columns, similarity search in SQL, indexes (HNSW)",
+        "The RAG pipeline: ingest -> embed -> retrieve -> generate with citations",
+        "Hybrid search: Postgres full-text search + vector search; SQL filters on metadata",
+        "Evaluating RAG: retrieval hit rate, faithfulness, answer relevance",
+        "When RAG is not the answer"
+      ],
+      "lab": "Build semantic search over 50 short documents in pgvector; compare three chunk sizes.",
+      "project": {
+        "title": "College handbook RAG bot (Phase 2 project)",
+        "brief": "Ingest real college PDFs (syllabus, rules, placement guides) into pgvector and answer questions with cited sources through a Streamlit or web UI.",
+        "deliverables": [
+          "At least 3 source documents stored in PostgreSQL with pgvector",
+          "Every answer cites the source document and page",
+          "Says 'I don't know' when the answer isn't in the documents",
+          "Evaluation on 20 questions with a reported accuracy",
+          "Live 5-minute demo in lab"
+        ],
+        "stretch": "Filter answers by department or year using SQL metadata filters."
+      }
+    },
+    {
+      "week": 9,
+      "phase": 3,
+      "title": "The agent loop from scratch",
+      "outcomes": [
+        "Explain the perceive -> reason -> act -> observe loop.",
+        "Build a working agent in plain Python with no framework.",
+        "Decide when a fixed workflow is better than an agent."
+      ],
+      "topics": [
+        "What makes something an agent; autonomy levels",
+        "The ReAct pattern (reason + act)",
+        "Planning and task decomposition; reflection / self-critique",
+        "Workflows vs agents: prompt chaining, routing, parallelisation",
+        "Live build: a minimal agent in about 100 lines of Python",
+        "Stopping conditions, max-step limits and loop detection",
+        "Error recovery and fallbacks",
+        "Reading an agent trace to debug it"
+      ],
+      "lab": "Extend the class agent with a file-reading tool and a max-steps guard; break it on purpose and fix it.",
+      "project": {
+        "title": "Web research agent (no framework)",
+        "brief": "Given a question, the agent searches the web, reads pages and writes a short report with citations.",
+        "deliverables": [
+          "Agent loop written by hand (no LangGraph / CrewAI)",
+          "At least 2 tools (search, fetch page)",
+          "Step limit and clean failure message",
+          "Each step's trace logged to a database table",
+          "Report includes source links"
+        ],
+        "stretch": "Add a self-critique step that checks the report before returning it."
+      }
+    },
+    {
+      "week": 10,
+      "phase": 3,
+      "title": "Frameworks and memory",
+      "outcomes": [
+        "Compare the main agent frameworks and choose one.",
+        "Build a stateful agent graph with LangGraph.",
+        "Add short- and long-term memory backed by PostgreSQL."
+      ],
+      "topics": [
+        "Framework tour: LangGraph, CrewAI, OpenAI Agents SDK, Claude Agent SDK, Google ADK",
+        "LangGraph: state, nodes, edges, conditional routing",
+        "Rebuilding the Week 9 agent in LangGraph",
+        "Checkpointing agent state in PostgreSQL: pause, resume and time-travel",
+        "Memory: short-term (conversation state) vs long-term (facts in Postgres tables, semantic memory in pgvector)",
+        "What to remember and what to forget; privacy of stored memory"
+      ],
+      "lab": "Add a Postgres checkpointer to a LangGraph agent; kill the process mid-run and resume it.",
+      "project": {
+        "title": "Personal task agent",
+        "brief": "A chat agent that manages a to-do list and simple schedule stored in Postgres and remembers user preferences across sessions.",
+        "deliverables": [
+          "Built with a framework (LangGraph recommended)",
+          "Tasks and preferences stored in a designed Postgres schema",
+          "State checkpointed so a conversation can resume",
+          "Demo of the agent recalling a preference from a previous session"
+        ],
+        "stretch": "Let users view and delete what the agent remembers about them."
+      }
+    },
+    {
+      "week": 11,
+      "phase": 3,
+      "title": "MCP and data agents (text-to-SQL)",
+      "outcomes": [
+        "Build and use MCP servers to connect agents to tools and data.",
+        "Build an agent that answers questions by writing SQL.",
+        "Apply safety controls to agents that touch databases."
+      ],
+      "topics": [
+        "Model Context Protocol (MCP): hosts, clients, servers, tools and resources",
+        "Building an MCP server in Python with FastMCP",
+        "Using existing MCP servers (filesystem, GitHub, PostgreSQL)",
+        "Text-to-SQL: giving the model the schema, sample rows and business definitions",
+        "Generate -> validate -> run -> explain; self-correction when a query fails",
+        "Safety: read-only users, allow-listed tables, row limits, timeouts, blocking DROP / DELETE",
+        "Measuring text-to-SQL accuracy with a question / expected-answer set"
+      ],
+      "lab": "Write an MCP server over the Phase 1 database; connect it to an agent and a desktop MCP client.",
+      "project": {
+        "title": "Natural-language analytics agent",
+        "brief": "An agent over a sample sales or college database: users ask questions in plain English; it writes safe SQL, runs it, explains the answer and draws a simple chart.",
+        "deliverables": [
+          "Custom MCP server exposing schema and a guarded query tool",
+          "Read-only connection, row limit and query timeout enforced",
+          "At least 80% correct on a 20-question test set (report score)",
+          "Shows the generated SQL alongside each answer"
+        ],
+        "stretch": "Add a 'clarifying question' step for ambiguous requests."
+      }
+    },
+    {
+      "week": 12,
+      "phase": 3,
+      "title": "Multi-agent systems and human-in-the-loop",
+      "outcomes": [
+        "Design multi-agent systems using common patterns.",
+        "Add human approval before risky actions.",
+        "Recognise the cost and failure modes of multi-agent setups."
+      ],
+      "topics": [
+        "Patterns: supervisor / worker, handoffs, debate, parallel sub-agents",
+        "Role-based teams with CrewAI; supervisor graphs with LangGraph",
+        "Agent-to-agent (A2A) protocol basics",
+        "Human-in-the-loop: interrupts and approval steps before sending, paying, deleting or writing to a database",
+        "Cost, latency and error amplification in multi-agent systems",
+        "Capstone kick-off: forming teams and scoping ideas"
+      ],
+      "lab": "Build a two-agent planner / executor system with an approval interrupt.",
+      "project": {
+        "title": "Multi-agent content team (Phase 3 project, teams)",
+        "brief": "A researcher, writer and reviewer agent produce a blog post or report on a given topic, with a human approval step before 'publishing'.",
+        "deliverables": [
+          "At least 3 specialised agents with clear roles",
+          "Human approval interrupt before the final output",
+          "Reviewer can send work back for revision",
+          "Runs, costs and approvals logged in Postgres",
+          "Capstone proposal submitted (1 page)"
+        ],
+        "stretch": "Publish approved posts to a real blog or Notion page."
+      }
+    },
+    {
+      "week": 13,
+      "phase": 4,
+      "title": "Streaming and event-driven agents",
+      "outcomes": [
+        "Stream tokens and agent steps to a UI in real time.",
+        "Choose between SSE and WebSockets.",
+        "Trigger agents from events, schedules, queues and database changes."
+      ],
+      "topics": [
+        "Why real time matters: latency budgets and perceived speed",
+        "Token streaming from LLM APIs",
+        "Server-Sent Events (SSE) vs WebSockets",
+        "FastAPI WebSocket endpoints",
+        "A simple chat front end (HTML/JS or React)",
+        "Streaming intermediate steps: 'searching...', tool calls, partial results",
+        "Event-driven agents: webhooks, schedules (cron), Redis queues, Postgres LISTEN / NOTIFY",
+        "Handling disconnects and cancellation"
+      ],
+      "lab": "Add token streaming and a live 'agent is thinking' status panel to the Week 10 agent.",
+      "project": {
+        "title": "Live streaming chat agent",
+        "brief": "A web chat where the agent streams its answer token by token and shows each tool call as it happens.",
+        "deliverables": [
+          "WebSocket or SSE streaming end to end",
+          "Tool calls visible in the UI in real time",
+          "Time-to-first-token under 2 seconds (report measured value)",
+          "User can stop a response mid-stream"
+        ],
+        "stretch": "Trigger the agent automatically when a new row is inserted (LISTEN / NOTIFY)."
+      }
+    },
+    {
+      "week": 14,
+      "phase": 4,
+      "title": "Voice, live data and computer-use agents",
+      "outcomes": [
+        "Build a voice pipeline (speech-to-text -> LLM -> text-to-speech).",
+        "Build agents that store and react to live data feeds.",
+        "Understand browser / computer-use agents and their risks."
+      ],
+      "topics": [
+        "Voice pipeline: STT, LLM, TTS; realtime speech APIs",
+        "Latency and turn-taking; handling interruptions (barge-in)",
+        "Voice agent frameworks: LiveKit Agents, Pipecat",
+        "Multilingual voice (English + regional languages)",
+        "Live data agents: polling vs push; storing time-series readings in Postgres",
+        "Threshold alerts through Telegram / Discord bots",
+        "Browser automation agents with Playwright; computer-use agents",
+        "Risks: prompt injection from web pages, runaway actions"
+      ],
+      "lab": "Build a push-to-talk voice bot that answers from the Week 8 RAG index.",
+      "project": {
+        "title": "Choose one: voice assistant or live market-watch agent",
+        "brief": "Option A: a voice assistant for campus FAQs. Option B: an agent that logs stock / crypto prices or news to Postgres and sends an explained alert on Telegram or Discord when conditions are met.",
+        "deliverables": [
+          "Option A: end-to-end voice with interruption support",
+          "Option B: live feed stored in Postgres + trigger + explained alert",
+          "Latency or alert-delay measured and reported",
+          "Capstone progress check-in (working prototype)"
+        ],
+        "stretch": "Option A in a regional language; Option B with a daily SQL-generated summary report."
+      }
+    },
+    {
+      "week": 15,
+      "phase": 4,
+      "title": "Evaluation, safety and deployment",
+      "outcomes": [
+        "Evaluate agents with test sets and LLM-as-judge.",
+        "Trace and debug agents in production.",
+        "Secure and deploy an agent and its database as a live service."
+      ],
+      "topics": [
+        "Evaluating agents: task success rate, test sets, LLM-as-judge, regression tests",
+        "Observability: tracing agent steps with Langfuse or LangSmith",
+        "Safety: prompt injection, tool and database permissions, sandboxing, rate limits, data privacy",
+        "Docker and Docker Compose (app + Postgres)",
+        "Managed Postgres (Neon / Supabase); backups and migrations in production",
+        "Deploying to Render / Railway / Hugging Face Spaces or a cloud VM",
+        "Secrets, logging and cost monitoring"
+      ],
+      "lab": "Containerise the capstone with Docker Compose and deploy it with a managed Postgres database.",
+      "project": {
+        "title": "Deploy and evaluate the capstone",
+        "brief": "Each team deploys its capstone and runs its full evaluation set.",
+        "deliverables": [
+          "Public URL with managed database",
+          "Evaluation set of 20+ tasks run, results recorded",
+          "Tracing enabled for all agent runs",
+          "One improvement made based on evaluation results"
+        ],
+        "stretch": "Add a CI pipeline that runs the evaluation set on every push."
+      }
+    },
+    {
+      "week": 16,
+      "phase": 4,
+      "title": "Capstone polish and demo day",
+      "outcomes": [
+        "Present a working AI product clearly to a technical panel.",
+        "Reflect on responsible AI and when not to automate.",
+        "Package projects into a job-ready portfolio."
+      ],
+      "topics": [
+        "Responsible AI: bias, transparency, consent, when not to automate",
+        "Performance and cost tuning; fixing issues found in evaluation",
+        "Demo rehearsal with peer feedback",
+        "Building a portfolio: READMEs, demo videos, writing about projects",
+        "Careers in AI engineering; interview prep (Python, SQL, system design for agents)",
+        "Course retrospective",
+        "Demo day deliverables: 10-minute live demo + 5-minute Q&A; Evaluation report and safety notes; Public URL, GitHub repo and demo video"
+      ],
+      "lab": "Final dry runs, then demo day.",
+      "project": null
+    }
+  ],
+  "capstone": {
+    "summary": "Teams of 2-4 build and deploy a real-time AI agent, backed by a database, that solves a real problem. The capstone is worth 35% of the final grade and is the centrepiece of each student's portfolio. It must use at least 3 tools, a PostgreSQL database with a designed schema, at least one real-time feature, persistent memory, a human approval step before risky actions, a 20+ task evaluation set, safety measures, and be deployed at a public URL with a GitHub repo and demo video.",
+    "ideas": [
+      "Campus voice concierge: answers questions about timetables, events and rules by voice (voice pipeline, RAG, streaming)",
+      "Placement prep coach: runs mock interviews, reviews resumes, tracks progress in a database (multi-agent, memory, voice)",
+      "Ask-your-data analyst: answers business questions over a company database in plain English, with charts (text-to-SQL, MCP, safety)",
+      "Live stock / crypto analyst: watches markets and news, stores history, explains moves, sends alerts (live data, event-driven, SQL)",
+      "Smart farming assistant: uses weather and mandi price data to advise farmers in regional languages (APIs, multilingual, RAG)",
+      "Customer support agent: order lookups, refunds (with approval) and FAQs over a mock store database (tool calling, HITL, evaluation)",
+      "Code review agent: reviews GitHub pull requests and suggests fixes (GitHub API, MCP, multi-step reasoning)",
+      "Travel planner: plans trips with live train, flight and weather data and builds itineraries (multi-agent, live APIs, streaming UI)"
+    ],
+    "milestones": [
+      {
+        "week": "12",
+        "item": "Proposal: 1-page proposal covering problem, users, tools/APIs, database schema sketch, real-time feature and risks. Instructor approval required."
+      },
+      {
+        "week": "13",
+        "item": "Architecture review: architecture diagram, ER diagram, tool list, data sources; 10-minute review with a TA."
+      },
+      {
+        "week": "14",
+        "item": "Working prototype: core agent loop working end to end locally; first 10 evaluation tasks written."
+      },
+      {
+        "week": "15",
+        "item": "Deployed + evaluated: public URL with managed database, full evaluation run, tracing enabled."
+      },
+      {
+        "week": "16",
+        "item": "Demo day: final repo, README, demo video (up to 5 min); 10-minute live demo + 5-minute Q&A in front of a panel."
+      }
+    ]
+  },
+  "assessment": [
+    {
+      "component": "Weekly mini-projects (12 non-phase weeks, about 2% each)",
+      "weight": "25%"
+    },
+    {
+      "component": "Phase projects (Weeks 5, 8 and 12, 10% each, with live demo)",
+      "weight": "30%"
+    },
+    {
+      "component": "Concept quizzes (end of Phases 1, 2 and 3)",
+      "weight": "10%"
+    },
+    {
+      "component": "Capstone (proposal 5%, final build and deployment 15%, evaluation and safety report 5%, demo day 10%)",
+      "weight": "35%"
+    }
+  ],
+  "tools": [
+    "Python 3.12+",
+    "VS Code",
+    "Git / GitHub",
+    "uv / pip",
+    "Jupyter / Google Colab",
+    "dataclasses",
+    "Pydantic",
+    "httpx",
+    "FastAPI",
+    "Streamlit",
+    "WebSockets",
+    "HTML/JS or React",
+    "SQLite",
+    "PostgreSQL",
+    "DBeaver / pgAdmin",
+    "psycopg",
+    "SQLAlchemy",
+    "Alembic",
+    "Claude, OpenAI or Gemini APIs",
+    "Ollama",
+    "pgvector",
+    "Chroma / Qdrant",
+    "sentence-transformers",
+    "pypdf",
+    "LangGraph (+ Postgres checkpointer)",
+    "CrewAI",
+    "OpenAI Agents SDK / Claude Agent SDK",
+    "FastMCP",
+    "Redis",
+    "LiveKit Agents / Pipecat",
+    "Playwright",
+    "Telegram / Discord bot APIs",
+    "Docker / Docker Compose",
+    "Neon / Supabase (managed Postgres)",
+    "Render / Railway / Hugging Face Spaces",
+    "Langfuse / LangSmith"
+  ],
+  "policies": [
+    "AI coding tools are allowed and encouraged, but students must be able to explain any code they submit.",
+    "Academic integrity: sharing ideas is fine; copying another student's repository is not. Cite any code, tutorial or template used.",
+    "API keys must never be committed; a leaked key means the project is marked down and the key is revoked.",
+    "Late work: 10% penalty per day, up to 3 days. Phase projects and demo day cannot be late without prior approval.",
+    "At least 80% lab attendance is required to be eligible for the capstone.",
+    "Agents must not scrape sites that prohibit it, send unsolicited messages, or act on real accounts without explicit consent."
+  ],
+  "defaultPrice": 4999,
+  "sort": 1
+}

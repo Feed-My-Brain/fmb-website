@@ -1,0 +1,766 @@
+{
+  "slug": "ml-dl-transformers",
+  "title": "AI, Machine Learning, Deep Learning and Transformers",
+  "shortTitle": "ML, Deep Learning & Transformers",
+  "tagline": "From first Python script to building a mini GPT and fine-tuning LLMs.",
+  "summary": "In 20 weeks (5 months), students go from writing their first Python script to training neural networks, building a small GPT from scratch and fine-tuning modern Transformer models. Every week ends with a project on GitHub, and key algorithms are built from scratch once before students use libraries, so nothing is a black box.",
+  "durationWeeks": 20,
+  "months": 5,
+  "hoursPerWeek": 6,
+  "totalHours": 120,
+  "projectsLabel": "19 + capstone",
+  "prerequisites": "None. No prior Python or ML required; Class 12 maths is enough, and ML maths is taught in Week 5.",
+  "audience": "Undergraduate students from any branch. No prior Python or ML required. Class 12 maths is enough; ML maths is taught in Week 5.",
+  "format": "Two 90-minute theory + live-coding sessions and one 3-hour lab each week (about 6 contact hours), plus 3-4 hours of self-study and project work.",
+  "teamSize": "Weekly projects are individual; the Week 8 competition and the capstone are in teams of 2-4.",
+  "hardware": "Any laptop with 8 GB RAM. GPU work runs on free Google Colab / Kaggle notebooks.",
+  "outcome": "A portfolio of 19 projects on GitHub / Hugging Face Hub and one deployed capstone model with a demo video.",
+  "learningOutcomes": [
+    "Write clean Python and use NumPy, Pandas and Matplotlib to clean, explore and visualise data.",
+    "Explain the linear algebra, calculus and probability behind ML, and implement gradient descent from scratch.",
+    "Build, tune, evaluate and explain classical ML models with scikit-learn (regression, classification, ensembles, clustering, PCA).",
+    "Build neural networks from scratch and in PyTorch, including CNNs for images and RNNs / LSTMs for sequences.",
+    "Explain attention and the Transformer architecture, and build a small GPT from scratch.",
+    "Use and fine-tune pretrained Transformers (BERT, ViT, small LLMs) with Hugging Face, including LoRA / QLoRA.",
+    "Track experiments, deploy models as apps or APIs, and check models for bias, errors and failure cases."
+  ],
+  "highlights": [
+    "No prior Python or ML needed - Class 12 maths is enough",
+    "Key algorithms built from scratch before using libraries",
+    "Build a mini GPT and fine-tune small LLMs with QLoRA",
+    "19 portfolio projects plus a deployed team capstone"
+  ],
+  "phases": [
+    {
+      "number": 1,
+      "title": "Python and data foundations",
+      "weeks": "1-4",
+      "summary": "Most of an ML engineer's time goes into data. This phase builds fluent Python, fast array programming with NumPy, and the Pandas and plotting skills needed to clean and explore real datasets.",
+      "gate": "Load a messy real dataset, clean it, and explain it with clear charts and written insights."
+    },
+    {
+      "number": 2,
+      "title": "Maths for ML and classical ML",
+      "weeks": "5-10",
+      "summary": "Students learn the maths behind learning, implement key algorithms from scratch, then master scikit-learn: regression, classification, ensembles, clustering and deployment, which still solve most real-world tabular problems.",
+      "gate": "Take a tabular problem from raw data to a tuned, explained and deployed ML model."
+    },
+    {
+      "number": 3,
+      "title": "Deep learning with PyTorch",
+      "weeks": "11-15",
+      "summary": "Students build a neural network by hand, then use PyTorch on free GPUs to train CNNs for images and RNNs / LSTMs for sequences, with good training practice and experiment tracking.",
+      "gate": "Train, debug and deploy a PyTorch image or text model, and explain backpropagation."
+    },
+    {
+      "number": 4,
+      "title": "Transformers, LLMs and capstone",
+      "weeks": "16-20",
+      "summary": "Students build attention and a mini GPT from scratch, fine-tune pretrained Transformers with Hugging Face, fine-tune a small LLM with LoRA, and finish with MLOps, responsible AI and capstone demo day.",
+      "gate": "Explain and implement attention, fine-tune a pretrained Transformer, and ship a capstone."
+    }
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "phase": 1,
+      "title": "Python basics",
+      "outcomes": [
+        "Set up Python, Jupyter, Colab and Git.",
+        "Write programs with variables, conditionals, loops and functions.",
+        "Use AI coding assistants while understanding every line."
+      ],
+      "topics": [
+        "Course intro: what AI, ML, DL and Transformers are, with live demos",
+        "Installing Python 3.12+, VS Code, Jupyter; using Google Colab",
+        "Variables, data types, operators, strings and f-strings",
+        "Input and output",
+        "Conditionals and loops",
+        "Functions: parameters, return values, scope",
+        "Git and GitHub basics",
+        "Using AI coding assistants responsibly"
+      ],
+      "lab": "Pair-program a number-guessing game, then refactor it into functions. Push to GitHub.",
+      "project": {
+        "title": "Student report-card generator",
+        "brief": "Reads marks for a class, calculates totals, percentages, grades and rank, and prints formatted report cards.",
+        "deliverables": [
+          "At least 4 functions with clear names",
+          "Handles invalid marks without crashing",
+          "Class topper and subject averages shown",
+          "Repo with README"
+        ],
+        "stretch": "Export report cards to a text file per student."
+      }
+    },
+    {
+      "week": 2,
+      "phase": 1,
+      "title": "Data structures, files, OOP and Git",
+      "outcomes": [
+        "Choose the right data structure for a problem.",
+        "Read and write CSV and JSON files.",
+        "Model problems with classes and dataclasses."
+      ],
+      "topics": [
+        "Lists, tuples, dictionaries, sets, comprehensions",
+        "Reading / writing CSV and JSON",
+        "Exceptions and error handling",
+        "Modules and packages; pip and virtual environments",
+        "Classes, objects, methods, inheritance",
+        "Dataclasses and type hints",
+        "Project structure across files",
+        "Git branches and pull requests"
+      ],
+      "lab": "Build a contact book with add / search / delete saved to JSON.",
+      "project": {
+        "title": "Personal expense tracker",
+        "brief": "A class-based app to add, filter and summarise expenses by category and month, stored in CSV.",
+        "deliverables": [
+          "Expense modelled as a class or dataclass",
+          "Data persists between runs",
+          "Monthly and category summaries",
+          "Input validation"
+        ],
+        "stretch": "Add a monthly bar chart (preview of Week 4)."
+      }
+    },
+    {
+      "week": 3,
+      "phase": 1,
+      "title": "NumPy and vectorised thinking",
+      "outcomes": [
+        "Create and manipulate arrays of any shape.",
+        "Replace Python loops with fast vectorised operations.",
+        "Treat images and datasets as arrays."
+      ],
+      "topics": [
+        "Arrays, dtypes, shapes, reshaping",
+        "Indexing, slicing, boolean masks",
+        "Broadcasting rules",
+        "Vectorised maths vs loops (timing demo)",
+        "Matrix operations: dot, matmul, transpose",
+        "Random numbers and basic statistics",
+        "Images as 3D arrays (height x width x channels)",
+        "Saving and loading arrays"
+      ],
+      "lab": "Speed challenge: rewrite five loop-based functions in NumPy and measure the speed-up.",
+      "project": {
+        "title": "Image filters with NumPy",
+        "brief": "Load a photo as an array and implement filters without image libraries.",
+        "deliverables": [
+          "Grayscale, flip, crop, brightness and blur",
+          "No Python loops over pixels",
+          "Before / after images in README",
+          "Timing comparison vs a loop version"
+        ],
+        "stretch": "Implement edge detection with a Sobel filter (preview of convolutions)."
+      }
+    },
+    {
+      "week": 4,
+      "phase": 1,
+      "title": "Pandas, cleaning, visualisation and EDA",
+      "outcomes": [
+        "Load, clean and reshape real-world data with Pandas.",
+        "Choose the right chart for a question.",
+        "Run an exploratory data analysis and communicate insights."
+      ],
+      "topics": [
+        "Series and DataFrames; loading CSV / Excel",
+        "Selecting, filtering, sorting, groupby, merge, pivot",
+        "Cleaning: missing values, duplicates, types, outliers",
+        "Matplotlib and Seaborn: histograms, box, scatter, line, heatmaps",
+        "EDA workflow: questions -> charts -> insights",
+        "Telling a story with data"
+      ],
+      "lab": "Clean a deliberately messy dataset and produce 5 charts that answer given questions.",
+      "project": {
+        "title": "EDA report on a real dataset (Phase 1 project)",
+        "brief": "Pick an Indian open dataset (IPL, air quality, crop production, census, etc.) and produce an EDA notebook.",
+        "deliverables": [
+          "Documented cleaning steps",
+          "At least 8 well-labelled charts",
+          "10 written insights backed by the data",
+          "Live 5-minute presentation in lab"
+        ],
+        "stretch": "Publish the notebook on Kaggle."
+      }
+    },
+    {
+      "week": 5,
+      "phase": 2,
+      "title": "Maths for ML (taught with code)",
+      "outcomes": [
+        "Use vectors and matrices to represent data and models.",
+        "Compute gradients and explain gradient descent.",
+        "Reason with probability and basic statistics."
+      ],
+      "topics": [
+        "Vectors, dot products, norms; matrices as transformations",
+        "Matrix multiplication with NumPy",
+        "Derivatives, partial derivatives, gradients, chain rule",
+        "Gradient descent: learning rate, convergence, local minima",
+        "Probability: distributions, expectation, variance, Bayes' rule",
+        "Sampling, correlation vs causation"
+      ],
+      "lab": "Implement numerical gradients and compare with hand-derived ones.",
+      "project": {
+        "title": "Gradient descent visualiser + probability simulations",
+        "brief": "Animate gradient descent on 2D functions and run Monte Carlo simulations.",
+        "deliverables": [
+          "Gradient descent written from scratch",
+          "Effect of 3 learning rates shown",
+          "Monte Carlo for at least 3 problems (e.g. birthday problem)",
+          "Short write-up of what was learned"
+        ],
+        "stretch": "Add momentum and compare convergence."
+      }
+    },
+    {
+      "week": 6,
+      "phase": 2,
+      "title": "ML fundamentals and linear regression",
+      "outcomes": [
+        "Explain supervised learning, training and generalisation.",
+        "Implement linear regression from scratch and with scikit-learn.",
+        "Diagnose overfitting and apply regularisation."
+      ],
+      "topics": [
+        "What ML is; supervised vs unsupervised; features and labels",
+        "Train / validation / test splits",
+        "Overfitting, underfitting, bias-variance",
+        "Linear regression from scratch with gradient descent",
+        "scikit-learn API: fit, predict, score",
+        "Metrics: MAE, RMSE, R^2; polynomial features; Ridge and Lasso"
+      ],
+      "lab": "Fit models of increasing complexity and plot training vs validation error.",
+      "project": {
+        "title": "House price predictor",
+        "brief": "Predict house prices with a from-scratch model and scikit-learn, and compare.",
+        "deliverables": [
+          "From-scratch and scikit-learn versions agree closely",
+          "Proper train / test split",
+          "RMSE and R^2 reported",
+          "Residual plot and discussion"
+        ],
+        "stretch": "Add regularisation and tune its strength."
+      }
+    },
+    {
+      "week": 7,
+      "phase": 2,
+      "title": "Classification",
+      "outcomes": [
+        "Train and compare common classifiers.",
+        "Pick evaluation metrics that match the problem.",
+        "Turn text into features."
+      ],
+      "topics": [
+        "Logistic regression and decision boundaries",
+        "k-nearest neighbours, decision trees",
+        "Naive Bayes; SVM intuition",
+        "Confusion matrix, precision, recall, F1, ROC-AUC",
+        "Choosing metrics when classes are imbalanced",
+        "Text features: bag-of-words, TF-IDF"
+      ],
+      "lab": "Build a decision tree by hand on a tiny dataset, then check with scikit-learn.",
+      "project": {
+        "title": "SMS spam or placement predictor",
+        "brief": "Train at least 3 classifiers, compare them, and analyse the mistakes.",
+        "deliverables": [
+          "3+ models compared on the same split",
+          "Metric choice justified",
+          "Confusion matrix and 10 misclassified examples discussed",
+          "Saved best model"
+        ],
+        "stretch": "Try a simple threshold tuning to trade precision for recall."
+      }
+    },
+    {
+      "week": 8,
+      "phase": 2,
+      "title": "Ensembles, feature engineering and tuning",
+      "outcomes": [
+        "Use random forests and gradient boosting.",
+        "Engineer useful features and build pipelines.",
+        "Tune hyperparameters with cross-validation."
+      ],
+      "topics": [
+        "Bagging and random forests",
+        "Boosting: XGBoost, LightGBM",
+        "Feature importance",
+        "Feature engineering: encoding, scaling, dates, interactions",
+        "scikit-learn Pipelines and ColumnTransformer",
+        "Cross-validation, grid / random search, Optuna"
+      ],
+      "lab": "Competition kick-off: teams explore the data and submit a baseline.",
+      "project": {
+        "title": "In-class Kaggle-style competition (teams)",
+        "brief": "Teams compete on a private leaderboard (e.g. loan default prediction).",
+        "deliverables": [
+          "At least 5 leaderboard submissions",
+          "Pipeline with cross-validation",
+          "Short write-up: what worked and what did not",
+          "Top teams present their approach"
+        ],
+        "stretch": "Try model stacking."
+      }
+    },
+    {
+      "week": 9,
+      "phase": 2,
+      "title": "Unsupervised learning",
+      "outcomes": [
+        "Group data with clustering algorithms.",
+        "Reduce dimensions for modelling and visualisation.",
+        "Detect unusual data points."
+      ],
+      "topics": [
+        "k-means and choosing k (elbow, silhouette)",
+        "Hierarchical clustering, DBSCAN",
+        "Evaluating clusters",
+        "PCA: intuition and maths link to Week 5",
+        "t-SNE / UMAP for visualisation",
+        "Anomaly detection (Isolation Forest)"
+      ],
+      "lab": "Compress images with PCA and see how many components are needed.",
+      "project": {
+        "title": "Customer segmentation",
+        "brief": "Cluster retail customers and describe each segment.",
+        "deliverables": [
+          "Two clustering methods compared",
+          "PCA visualisation of clusters",
+          "Business profile for each segment",
+          "Recommendations for each segment"
+        ],
+        "stretch": "Flag unusual customers with anomaly detection."
+      }
+    },
+    {
+      "week": 10,
+      "phase": 2,
+      "title": "ML in practice and deployment",
+      "outcomes": [
+        "Avoid common real-world ML mistakes.",
+        "Explain individual predictions.",
+        "Deploy a model as an app or API."
+      ],
+      "topics": [
+        "Data leakage and how to spot it",
+        "Class imbalance: class weights, SMOTE",
+        "Calibration; explaining models with SHAP",
+        "Saving models (joblib); FastAPI prediction endpoint",
+        "Quick UIs with Streamlit / Gradio; Hugging Face Spaces",
+        "Model cards and fairness checks"
+      ],
+      "lab": "Find the leakage in three deliberately broken notebooks.",
+      "project": {
+        "title": "End-to-end deployed ML app (Phase 2 project)",
+        "brief": "From raw data to a deployed app (e.g. crop recommendation, loan approval, student dropout risk).",
+        "deliverables": [
+          "Clean pipeline from raw data to model",
+          "SHAP explanation shown for each prediction",
+          "Deployed public app",
+          "Model card with limits and fairness notes",
+          "Live 5-minute demo"
+        ],
+        "stretch": "Add input validation and logging to the API."
+      }
+    },
+    {
+      "week": 11,
+      "phase": 3,
+      "title": "Neural networks from scratch",
+      "outcomes": [
+        "Explain neurons, layers and activation functions.",
+        "Derive and implement backpropagation.",
+        "Train a network with mini-batch SGD."
+      ],
+      "topics": [
+        "Perceptron and its limits (XOR)",
+        "Layers, activations: sigmoid, tanh, ReLU, softmax",
+        "Loss functions: MSE, cross-entropy",
+        "Backpropagation with the chain rule, step by step",
+        "Mini-batch SGD",
+        "Weight initialisation; debugging with gradient checks"
+      ],
+      "lab": "Hand-compute one backprop step on paper, then verify in code.",
+      "project": {
+        "title": "NumPy neural network on MNIST",
+        "brief": "A 2-layer network in pure NumPy that recognises handwritten digits.",
+        "deliverables": [
+          "No deep learning libraries used",
+          "Over 90% test accuracy",
+          "Loss and accuracy curves",
+          "Gradient check passes"
+        ],
+        "stretch": "Add a third layer and momentum."
+      }
+    },
+    {
+      "week": 12,
+      "phase": 3,
+      "title": "PyTorch fundamentals",
+      "outcomes": [
+        "Use tensors and autograd.",
+        "Write a clean, reusable training loop.",
+        "Train on a GPU."
+      ],
+      "topics": [
+        "Tensors and GPU basics",
+        "Autograd: how PyTorch computes gradients",
+        "nn.Module, layers, loss functions",
+        "Dataset and DataLoader",
+        "Optimisers (SGD, Adam), learning-rate schedules",
+        "Saving and loading checkpoints; Colab / Kaggle GPUs"
+      ],
+      "lab": "Port the Week 11 network to PyTorch and confirm it matches.",
+      "project": {
+        "title": "Fashion-MNIST classifier",
+        "brief": "Train and improve an MLP in PyTorch.",
+        "deliverables": [
+          "Reusable train / evaluate functions",
+          "Over 88% test accuracy",
+          "CPU vs GPU timing comparison",
+          "Checkpoint saved and reloaded"
+        ],
+        "stretch": "Add a learning-rate finder."
+      }
+    },
+    {
+      "week": 13,
+      "phase": 3,
+      "title": "CNNs and transfer learning",
+      "outcomes": [
+        "Explain convolutions and pooling.",
+        "Fine-tune pretrained vision models.",
+        "Interpret what a CNN has learned."
+      ],
+      "topics": [
+        "Convolutions, filters, stride, padding, pooling",
+        "Classic architectures: LeNet, VGG, ResNet",
+        "Data augmentation",
+        "Transfer learning with torchvision / timm",
+        "Grad-CAM visualisations",
+        "Intro to object detection (YOLO) and segmentation"
+      ],
+      "lab": "Build a small CNN on CIFAR-10, then beat it with a pretrained model.",
+      "project": {
+        "title": "Plant disease or Indian food classifier",
+        "brief": "Fine-tune a pretrained CNN on a real image dataset.",
+        "deliverables": [
+          "Train / validation / test split without leakage",
+          "Per-class accuracy and confusion matrix",
+          "Grad-CAM for correct and wrong predictions",
+          "Simple demo app"
+        ],
+        "stretch": "Run YOLO on campus photos and count objects."
+      }
+    },
+    {
+      "week": 14,
+      "phase": 3,
+      "title": "Sequence models",
+      "outcomes": [
+        "Represent words as vectors.",
+        "Build RNN / LSTM models for text.",
+        "Explain why RNNs led to attention."
+      ],
+      "topics": [
+        "Word embeddings: word2vec, GloVe",
+        "Tokenising text, padding, vocabularies",
+        "RNNs and the vanishing-gradient problem",
+        "LSTM and GRU",
+        "Text classification with LSTMs",
+        "Simple time-series forecasting; limits of RNNs"
+      ],
+      "lab": "Explore word-embedding analogies (king - man + woman).",
+      "project": {
+        "title": "Review sentiment analyser",
+        "brief": "An LSTM classifier for movie or product reviews (English or a regional language).",
+        "deliverables": [
+          "LSTM beats or matches the Week 7 TF-IDF baseline",
+          "Accuracy and F1 reported",
+          "10 wrong predictions analysed",
+          "Demo that scores any typed review"
+        ],
+        "stretch": "Try pretrained embeddings and compare."
+      }
+    },
+    {
+      "week": 15,
+      "phase": 3,
+      "title": "Training deep models well",
+      "outcomes": [
+        "Prevent and diagnose overfitting.",
+        "Track and compare experiments.",
+        "Explain the main generative model families."
+      ],
+      "topics": [
+        "Dropout, weight decay, batch norm, early stopping",
+        "Weights & Biases or MLflow experiment tracking",
+        "Hyperparameter search",
+        "Autoencoders; VAEs, GANs and diffusion (intuition)",
+        "Mixed precision and free-GPU tips",
+        "Capstone kick-off: teams and ideas"
+      ],
+      "lab": "Train an autoencoder to denoise images.",
+      "project": {
+        "title": "Deployed deep learning app (Phase 3 project)",
+        "brief": "Train a vision or text model with tracked experiments and deploy it on Hugging Face Spaces.",
+        "deliverables": [
+          "At least 5 tracked experiments compared",
+          "Deployed Gradio / Streamlit app",
+          "Failure cases presented honestly",
+          "Capstone proposal submitted (1 page)"
+        ],
+        "stretch": "Export the model to ONNX and compare speed."
+      }
+    },
+    {
+      "week": 16,
+      "phase": 4,
+      "title": "Attention and the Transformer",
+      "outcomes": [
+        "Explain self-attention with queries, keys and values.",
+        "Implement a Transformer block.",
+        "Compare encoder, decoder and encoder-decoder models."
+      ],
+      "topics": [
+        "Seq2seq and the attention idea",
+        "Scaled dot-product attention, step by step",
+        "Multi-head attention",
+        "Positional encodings, residuals, layer norm",
+        "Encoder vs decoder (BERT vs GPT vs T5)",
+        "Reading 'Attention Is All You Need' together"
+      ],
+      "lab": "Compute attention by hand for a 3-word sentence, then in code.",
+      "project": {
+        "title": "Transformer block from scratch",
+        "brief": "Implement attention and a full Transformer block in PyTorch.",
+        "deliverables": [
+          "Matches nn.MultiheadAttention output",
+          "Causal mask implemented",
+          "Attention heatmaps visualised",
+          "Explained in the README"
+        ],
+        "stretch": "Train the block on a toy sequence-reversal task."
+      }
+    },
+    {
+      "week": 17,
+      "phase": 4,
+      "title": "Tokenisation and building a mini GPT",
+      "outcomes": [
+        "Explain subword tokenisation.",
+        "Train a decoder-only Transformer.",
+        "Control text generation with sampling settings."
+      ],
+      "topics": [
+        "Tokenisation: characters, words, subwords",
+        "Byte-pair encoding (BPE) from scratch",
+        "Language modelling as next-token prediction",
+        "Building and training a mini GPT",
+        "Sampling: temperature, top-k, top-p",
+        "Scaling laws and what changes at large scale"
+      ],
+      "lab": "Train a BPE tokenizer on a local-language corpus and inspect the tokens.",
+      "project": {
+        "title": "Mini GPT",
+        "brief": "Train a small GPT on a text corpus (e.g. Thirukkural, Tamil / Hindi news, Shakespeare) and generate text.",
+        "deliverables": [
+          "Model and training loop written by the student",
+          "Training and validation loss curves",
+          "Samples at 3 temperatures",
+          "Parameter count and training time reported"
+        ],
+        "stretch": "Compare character-level vs BPE versions."
+      }
+    },
+    {
+      "week": 18,
+      "phase": 4,
+      "title": "Hugging Face and fine-tuning pretrained models",
+      "outcomes": [
+        "Use pretrained models from the Hugging Face Hub.",
+        "Fine-tune Transformers for classification and NER.",
+        "Build semantic search with sentence embeddings."
+      ],
+      "topics": [
+        "Transformers, Datasets, Tokenizers, Hub",
+        "Pipelines for quick inference",
+        "Pretrained BERT, T5 and Vision Transformer (ViT)",
+        "Fine-tuning with the Trainer API",
+        "Named-entity recognition",
+        "Sentence embeddings and semantic search"
+      ],
+      "lab": "Fine-tune a ViT on the Week 13 dataset and compare with the CNN.",
+      "project": {
+        "title": "Fine-tuned BERT model",
+        "brief": "Fine-tune DistilBERT or a multilingual model (e.g. IndicBERT) for news classification or NER.",
+        "deliverables": [
+          "Beats the Week 14 LSTM on the same task",
+          "Model and model card published on the Hub",
+          "Evaluation on a held-out set",
+          "Demo on Hugging Face Spaces"
+        ],
+        "stretch": "Add semantic search over a document collection."
+      }
+    },
+    {
+      "week": 19,
+      "phase": 4,
+      "title": "Large language models",
+      "outcomes": [
+        "Explain how LLMs are pretrained and aligned.",
+        "Fine-tune a small LLM with LoRA / QLoRA.",
+        "Choose between prompting, RAG and fine-tuning."
+      ],
+      "topics": [
+        "Pretraining, instruction tuning, RLHF / DPO (overview)",
+        "LoRA and QLoRA with PEFT",
+        "Preparing instruction datasets",
+        "Prompting vs RAG vs fine-tuning",
+        "Evaluating LLMs; hallucination",
+        "Multimodal: CLIP, vision-language models, diffusion overview"
+      ],
+      "lab": "QLoRA fine-tune a 1B model on a small instruction set on a free GPU.",
+      "project": {
+        "title": "LoRA fine-tuned domain assistant (Phase 4 project)",
+        "brief": "Fine-tune a small open LLM (1-3B) on a domain dataset (e.g. college FAQs) and compare approaches.",
+        "deliverables": [
+          "Instruction dataset of 300+ examples",
+          "QLoRA fine-tune completed on free GPU",
+          "Fine-tuned vs prompting vs RAG compared on 30 questions",
+          "Live 5-minute demo"
+        ],
+        "stretch": "Merge and quantise the model for faster inference."
+      }
+    },
+    {
+      "week": 20,
+      "phase": 4,
+      "title": "MLOps, responsible AI and demo day",
+      "outcomes": [
+        "Serve and monitor models in production.",
+        "Audit a model for bias and misuse.",
+        "Present an ML product to a panel."
+      ],
+      "topics": [
+        "Model serving; quantisation and ONNX",
+        "Monitoring and data drift",
+        "Responsible AI: bias audits, privacy, explainability",
+        "When not to use ML",
+        "Portfolio building; careers in ML engineering and research",
+        "Demo day: teams present their deployed capstone model to a panel (10-minute live demo + 5-minute Q&A; evaluation and bias report; public app, GitHub repo, model card and demo video)"
+      ],
+      "lab": "Final dry runs, then demo day.",
+      "project": null
+    }
+  ],
+  "capstone": {
+    "summary": "Teams of 2-4 train or fine-tune a model and deploy it to solve a real problem. The capstone is worth 35% of the final grade and is the centrepiece of each student's portfolio. Minimum requirements: a real dataset (public or collected) with its source and licence documented; a simple baseline and at least one deep learning or Transformer model that beats it; tracked experiments (W&B or MLflow) with a clear evaluation metric; error analysis and a basic bias / fairness check; and a deployed app or API, a GitHub repo with README, a model card and a demo video. Teams may propose their own idea if it meets the minimum requirements.",
+    "ideas": [
+      "Crop disease detector: identifies plant diseases from leaf photos and suggests actions (CNNs, transfer learning, mobile-friendly app)",
+      "Regional-language news classifier: classifies Tamil / Hindi news by topic and flags fake-news signals (multilingual Transformers, fine-tuning)",
+      "Regional speech-to-text: fine-tunes a speech model (e.g. Whisper) on local accents (audio models, fine-tuning, WER)",
+      "Traffic and helmet detection: counts vehicles and detects helmet violations from road video (object detection (YOLO), video)",
+      "Resume-job matcher with bias audit: ranks resumes against job descriptions and audits for bias (embeddings, ranking, fairness)",
+      "Domain assistant with LoRA: a fine-tuned small LLM for college, legal-aid or agriculture FAQs (QLoRA, RAG, LLM evaluation)",
+      "Sign-language recognition: recognises hand signs from webcam video (CNN / LSTM or Transformer, pose estimation)",
+      "Medical image classifier (research demo): classifies chest X-rays, clearly labelled as not for diagnosis (CNNs, Grad-CAM, responsible AI)"
+    ],
+    "milestones": [
+      {
+        "week": "15",
+        "item": "Proposal: problem, users, dataset source and licence, baseline approach, success metric. Instructor approval required."
+      },
+      {
+        "week": "16",
+        "item": "Data and baseline: cleaned dataset, EDA, and a simple baseline model with its score."
+      },
+      {
+        "week": "17",
+        "item": "Model v1: deep learning or Transformer model beating the baseline; experiments tracked."
+      },
+      {
+        "week": "18",
+        "item": "Mid-review: 10-minute review with a TA covering results so far, error analysis and plan for final week."
+      },
+      {
+        "week": "19",
+        "item": "Deployed: public app or API, evaluation report, error and bias analysis."
+      },
+      {
+        "week": "20",
+        "item": "Demo day: 10-minute live demo + 5-minute Q&A; final repo, model card, demo video (<= 5 min)."
+      }
+    ]
+  },
+  "assessment": [
+    {
+      "component": "Weekly projects (15 non-phase weeks, about 1.7% each)",
+      "weight": "25%"
+    },
+    {
+      "component": "Phase projects (Weeks 4, 10, 15 and 19, 7.5% each, with a 5-minute live demo)",
+      "weight": "30%"
+    },
+    {
+      "component": "Concept quizzes (one 20-minute quiz per phase, 4 total)",
+      "weight": "10%"
+    },
+    {
+      "component": "Capstone (proposal 5%, final model and deployment 15%, evaluation and bias report 5%, demo day presentation 10%)",
+      "weight": "35%"
+    }
+  ],
+  "tools": [
+    "Python 3.12+",
+    "VS Code",
+    "Jupyter",
+    "Google Colab",
+    "Kaggle notebooks",
+    "Git / GitHub",
+    "NumPy",
+    "Pandas",
+    "Matplotlib",
+    "Seaborn",
+    "scikit-learn",
+    "XGBoost",
+    "LightGBM",
+    "Optuna",
+    "SHAP",
+    "imbalanced-learn",
+    "joblib",
+    "FastAPI",
+    "Streamlit",
+    "Gradio",
+    "Hugging Face Spaces",
+    "PyTorch",
+    "torchvision",
+    "timm",
+    "Ultralytics YOLO",
+    "Weights & Biases",
+    "MLflow",
+    "Hugging Face Transformers",
+    "Hugging Face Datasets",
+    "Hugging Face Tokenizers",
+    "PEFT",
+    "bitsandbytes",
+    "sentence-transformers",
+    "ONNX",
+    "Docker (optional)"
+  ],
+  "policies": [
+    "AI coding tools are allowed, except on from-scratch assignments (Weeks 5, 6, 11, 16 and 17), which students must write and explain themselves. Demos include questions on code and maths.",
+    "Academic integrity: sharing ideas is fine; copying another student's repository is not. Cite any code, tutorial or template used.",
+    "Data ethics: use datasets you have the right to use, document their licences, and never upload personal data without consent.",
+    "Late work: 10% penalty per day, up to 3 days. Phase projects and demo day cannot be submitted late without prior approval.",
+    "Attendance: at least 80% of labs required to be eligible for the capstone.",
+    "Responsible use: models must not be presented as medical, legal or financial advice; demos in sensitive areas must be clearly labelled as research prototypes."
+  ],
+  "defaultPrice": 7999,
+  "sort": 2
+}
