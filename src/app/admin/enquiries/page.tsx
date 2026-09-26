@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
 import { courses } from "@/lib/courses";
 import { createSessionClient } from "@/lib/supabase/server";
+import { Select } from "@/components/Select";
 import { updateLeadStatus } from "../actions";
 
 export const metadata: Metadata = { title: "Enquiries", robots: { index: false } };
@@ -91,16 +92,20 @@ export default async function EnquiriesPage({ searchParams }: PageProps<"/admin/
                   {new Date(l.created_at).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Kolkata" })}
                 </div>
               </div>
-              <form action={updateLeadStatus} className="flex items-start gap-2">
+              <form action={updateLeadStatus} className="w-36">
                 <input type="hidden" name="leadId" value={l.id} />
-                <select name="status" defaultValue={l.status} className="input py-1.5 text-xs" aria-label="Status">
-                  <option value="new">New</option>
-                  <option value="contacted">Contacted</option>
-                  <option value="closed">Closed</option>
-                </select>
-                <button type="submit" className="btn-ghost btn-sm">
-                  Update
-                </button>
+                <Select
+                  size="sm"
+                  autoSubmit
+                  name="status"
+                  defaultValue={l.status}
+                  aria-label="Status"
+                  options={[
+                    { value: "new", label: "New" },
+                    { value: "contacted", label: "Contacted" },
+                    { value: "closed", label: "Closed" },
+                  ]}
+                />
               </form>
             </li>
           ))}

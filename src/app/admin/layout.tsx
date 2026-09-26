@@ -6,6 +6,7 @@ export default async function AdminLayout({ children }: LayoutProps<"/admin">) {
   const links = [
     { href: "/admin", label: "Overview" },
     { href: "/admin/submissions", label: "Submissions" },
+    { href: "/admin/batches", label: "Batches" },
     { href: "/admin/students", label: "Students" },
     { href: "/admin/courses", label: "Courses & pricing" },
     { href: "/admin/enquiries", label: "Enquiries" },

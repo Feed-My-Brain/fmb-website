@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { LogOut } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { NavLinks } from "@/components/NavLinks";
 import { signOut } from "@/app/actions/auth";
 import type { Profile } from "@/lib/auth";
 
@@ -20,11 +20,7 @@ export function AppShell({
           <div className="flex items-center gap-6">
             <Logo compact />
             <nav className="hidden items-center gap-1 md:flex">
-              {links.map((l) => (
-                <Link key={l.href} href={l.href} className="rounded-full px-3 py-1.5 text-sm text-muted transition hover:bg-white/5 hover:text-fg">
-                  {l.label}
-                </Link>
-              ))}
+              <NavLinks links={links} variant="desktop" />
             </nav>
           </div>
           <div className="flex items-center gap-3">
@@ -40,11 +36,7 @@ export function AppShell({
           </div>
         </div>
         <nav className="container-x flex gap-1 overflow-x-auto pb-3 md:hidden">
-          {links.map((l) => (
-            <Link key={l.href} href={l.href} className="shrink-0 rounded-full border border-line px-3 py-1 text-xs text-muted">
-              {l.label}
-            </Link>
-          ))}
+          <NavLinks links={links} variant="mobile" />
         </nav>
       </header>
       <main className="container-x flex-1 py-10">{children}</main>

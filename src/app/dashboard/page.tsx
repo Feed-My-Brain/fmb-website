@@ -21,7 +21,7 @@ export default async function DashboardPage() {
 
   const { data: enrollments } = await supabase
     .from("enrollments")
-    .select("course_id, courses(title)")
+    .select("course_id, courses(title), batch:batches!enrollments_batch_fkey(name)")
     .eq("student_id", profile.id)
     .order("enrolled_at");
 
@@ -61,6 +61,7 @@ export default async function DashboardPage() {
         const earned = evaluated.reduce((t, s) => t + Number(s!.marks ?? 0), 0);
         const possible = list.filter((p) => subByProject.get(p.id)?.status === "evaluated").reduce((t, p) => t + p.max_marks, 0);
         const courseTitle = (enr.courses as unknown as { title: string } | null)?.title ?? enr.course_id;
+        const batchName = (enr.batch as unknown as { name: string } | null)?.name;
 
         return (
           <section key={enr.course_id}>
@@ -69,6 +70,7 @@ export default async function DashboardPage() {
                 <CourseIcon slug={enr.course_id} size={18} />
                 <div>
                   <h2 className="font-display text-xl font-semibold">{courseTitle}</h2>
+                  {batchName && <span className="mr-3 text-xs text-subtle">{batchName}</span>}
                   <Link href={`/courses/${enr.course_id}#syllabus`} className="text-xs text-lav-300 hover:text-lav-200">
                     View syllabus
                   </Link>

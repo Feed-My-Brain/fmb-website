@@ -13,7 +13,7 @@ Next.js 16 · Tailwind CSS 4 · Supabase (Postgres + Auth) · hosted on Netlify 
 |---|---|
 | Public site | `/` · `/courses` · `/courses/[slug]` · `/compare` (+ quiz) · `/how-it-works` · `/showcase` · `/mentors` · `/pricing` · `/colleges` · `/blog` · `/faq` · `/about` · `/contact` · `/legal/terms` · `/legal/privacy` · `/legal/refund` |
 | Student | `/login` · `/dashboard` (projects, submit link, status, marks) · `/dashboard/password` |
-| Admin | `/admin` (overview) · `/admin/submissions` (open link → enter marks) · `/admin/students` (create login, enroll, reset password) · `/admin/courses` (prices, next batch, max marks) · `/admin/enquiries` |
+| Admin | `/admin` (overview) · `/admin/batches` (create batches; per batch: add/remove students, review, gradebook) · `/admin/submissions` (open link → enter marks, filter by batch) · `/admin/students` (all students, reset password, delete) · `/admin/courses` (prices, next batch, max marks) · `/admin/enquiries` |
 
 **Where content lives**
 
@@ -52,12 +52,18 @@ Log in at `/login` with the admin account → you land on `/admin`.
 
 ## Day-to-day admin workflow
 
-1. **New student paid** → `/admin/students` → fill name, email, phone, course → **Create student** → click **Send on WhatsApp** to share the login.
-2. **Student submits** a GitHub link from their dashboard → it appears in `/admin/submissions` under *Awaiting evaluation*.
-3. **Open the link**, review, enter marks (+ optional remark) → **Save marks** → the student sees marks on their dashboard immediately.
+1. **New batch starting** → `/admin/batches` → **New batch** (course, name, dates, status).
+2. **New student paid** → open the batch → **Add students to this batch** → fill name, email, phone → **Create** → click **Send on WhatsApp** to share the login. Already has a login from another course? Use **Existing student** instead.
+3. **Wrong batch / dropped out** → on the batch's Students tab use **Move to batch…** or **Remove from batch** (keeps their login and past work). **Delete student** removes the login and all their submissions permanently.
+4. **Student submits** a GitHub link from their dashboard → it appears in `/admin/submissions` and in the batch's **Review** tab under *Awaiting evaluation*. The batch's **Gradebook** tab shows every student × project at a glance.
+5. **Open the link**, review, enter marks (+ optional remark) → **Save marks** → the student sees marks on their dashboard immediately.
 4. Need a redo? **Clear marks and allow resubmission** unlocks the link for the student.
-5. **Change a fee or batch date** → `/admin/courses` → Save → the public site updates immediately.
-6. **Forgot password** → `/admin/students` → **Reset password** → share the new one on WhatsApp.
+7. **Change a fee or batch date** → `/admin/courses` → Save → the public site updates immediately.
+8. **Forgot password** → `/admin/students` → **Reset password** → share the new one on WhatsApp.
+
+## Upgrading an existing database
+
+`supabase/schema.sql` is safe to re-run. After pulling schema changes (e.g. batches), paste it into the Supabase SQL editor and **Run** again **before** deploying the new code. Existing enrollments show up under *Students → Not in a batch* until you assign them.
 
 ## Security model
 

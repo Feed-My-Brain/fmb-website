@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { CheckCircle2, Send } from "lucide-react";
 import { submitLead, type LeadState } from "@/app/actions/leads";
+import { Select } from "@/components/Select";
 
 type Props = {
   kind?: "contact" | "enquiry" | "college";
@@ -59,14 +60,12 @@ export function LeadForm({ kind = "contact", defaultCourse, courses }: Props) {
           <label className="label" htmlFor="lead-course">
             Interested in
           </label>
-          <select id="lead-course" name="course" defaultValue={defaultCourse ?? ""} className="input">
-            <option value="">Not sure yet</option>
-            {courses.map((c) => (
-              <option key={c.slug} value={c.slug}>
-                {c.shortTitle}
-              </option>
-            ))}
-          </select>
+          <Select
+            id="lead-course"
+            name="course"
+            defaultValue={defaultCourse ?? ""}
+            options={[{ value: "", label: "Not sure yet" }, ...courses.map((c) => ({ value: c.slug, label: c.shortTitle }))]}
+          />
         </div>
       )}
       <div>

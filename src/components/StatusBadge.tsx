@@ -6,3 +6,12 @@ export function StatusBadge({ status }: { status: "not_submitted" | "submitted" 
   }[status];
   return <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${map.cls}`}>{map.label}</span>;
 }
+
+export function BatchStatusBadge({ status }: { status: "upcoming" | "active" | "completed" }) {
+  const map = {
+    active: { label: "Active", cls: "border-mint-glow/40 bg-mint-glow/10 text-mint-glow" },
+    upcoming: { label: "Upcoming", cls: "border-cyan-glow/40 bg-cyan-glow/10 text-cyan-glow" },
+    completed: { label: "Completed", cls: "border-line-strong text-subtle" },
+  }[status];
+  return <span className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${map.cls}`}>{map.label}</span>;
+}

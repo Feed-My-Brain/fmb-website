@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ClipboardCheck, Inbox, IndianRupee, Users } from "lucide-react";
+import { ArrowRight, ClipboardCheck, Inbox, IndianRupee, Layers, Users } from "lucide-react";
 import { createSessionClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = { title: "Admin", robots: { index: false } };
@@ -9,16 +9,16 @@ export default async function AdminHome() {
   const supabase = await createSessionClient();
   const count = async (q: PromiseLike<{ count: number | null }>) => (await q).count ?? 0;
 
-  const [students, pending, evaluated, newLeads] = await Promise.all([
+  const [students, activeBatches, pending, newLeads] = await Promise.all([
     count(supabase.from("profiles").select("*", { count: "exact", head: true }).eq("role", "student")),
+    count(supabase.from("batches").select("*", { count: "exact", head: true }).eq("status", "active")),
     count(supabase.from("submissions").select("*", { count: "exact", head: true }).eq("status", "submitted")),
-    count(supabase.from("submissions").select("*", { count: "exact", head: true }).eq("status", "evaluated")),
     count(supabase.from("leads").select("*", { count: "exact", head: true }).eq("status", "new")),
   ]);
 
   const tiles = [
     { href: "/admin/submissions", icon: ClipboardCheck, label: "Awaiting evaluation", value: pending, accent: pending > 0 },
-    { href: "/admin/submissions?status=evaluated", icon: ClipboardCheck, label: "Evaluated", value: evaluated },
+    { href: "/admin/batches?status=active", icon: Layers, label: "Active batches", value: activeBatches },
     { href: "/admin/students", icon: Users, label: "Students", value: students },
     { href: "/admin/enquiries", icon: Inbox, label: "New enquiries", value: newLeads, accent: newLeads > 0 },
   ];
@@ -40,7 +40,7 @@ export default async function AdminHome() {
       <div className="mt-10 grid gap-4 md:grid-cols-3">
         {[
           { href: "/admin/submissions", icon: ClipboardCheck, title: "Evaluate submissions", text: "Open student links and enter marks." },
-          { href: "/admin/students", icon: Users, title: "Add a student", text: "Create a login after payment and enroll them in a course." },
+          { href: "/admin/batches", icon: Layers, title: "Manage batches", text: "Create a batch, add or remove its students and review their work." },
           { href: "/admin/courses", icon: IndianRupee, title: "Update prices & batches", text: "Change fees and next batch dates shown on the website." },
         ].map((a) => (
           <Link key={a.href + a.title} href={a.href} className="card card-hover group flex items-start gap-4 p-5">

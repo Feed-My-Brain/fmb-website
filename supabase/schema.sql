@@ -69,6 +69,34 @@ create table if not exists public.leads (
   created_at  timestamptz not null default now()
 );
 
+-- A cohort of students taking one course together, e.g. 'Nov 2026 · Weekend'.
+create table if not exists public.batches (
+  id          uuid primary key default gen_random_uuid(),
+  course_id   text not null references public.courses (id) on delete cascade,
+  name        text not null check (char_length(name) between 1 and 80),
+  start_date  date,
+  end_date    date,
+  status      text not null default 'upcoming' check (status in ('upcoming', 'active', 'completed')),
+  created_at  timestamptz not null default now(),
+  unique (course_id, name),
+  unique (id, course_id)                             -- target of the enrollments FK below
+);
+
+-- Each enrollment may belong to one batch of the same course. The composite FK
+-- guarantees the batch's course matches the enrollment's course, and 'restrict'
+-- stops a batch from being deleted while students are still in it.
+alter table public.enrollments add column if not exists batch_id uuid;
+do $$
+begin
+  if not exists (select 1 from pg_constraint where conname = 'enrollments_batch_fkey') then
+    alter table public.enrollments
+      add constraint enrollments_batch_fkey
+      foreign key (batch_id, course_id) references public.batches (id, course_id) on delete restrict;
+  end if;
+end $$;
+
+create index if not exists enrollments_batch_idx on public.enrollments (batch_id);
+create index if not exists batches_course_idx on public.batches (course_id, start_date desc);
 create index if not exists submissions_status_idx on public.submissions (status, submitted_at desc);
 create index if not exists projects_course_idx on public.projects (course_id, sort);
 create index if not exists leads_created_idx on public.leads (created_at desc);
@@ -187,6 +215,7 @@ alter table public.projects    enable row level security;
 alter table public.enrollments enable row level security;
 alter table public.submissions enable row level security;
 alter table public.leads       enable row level security;
+alter table public.batches     enable row level security;
 
 -- profiles
 drop policy if exists "profiles: read own or admin" on public.profiles;
@@ -218,6 +247,17 @@ create policy "enrollments: read own or admin" on public.enrollments
   for select to authenticated using (student_id = auth.uid() or public.is_admin());
 drop policy if exists "enrollments: admin write" on public.enrollments;
 create policy "enrollments: admin write" on public.enrollments
+  for all to authenticated using (public.is_admin()) with check (public.is_admin());
+
+-- batches: students read the batches they're in, admin manages
+drop policy if exists "batches: read own or admin" on public.batches;
+create policy "batches: read own or admin" on public.batches
+  for select to authenticated using (
+    public.is_admin()
+    or exists (select 1 from public.enrollments e where e.batch_id = batches.id and e.student_id = auth.uid())
+  );
+drop policy if exists "batches: admin write" on public.batches;
+create policy "batches: admin write" on public.batches
   for all to authenticated using (public.is_admin()) with check (public.is_admin());
 
 -- submissions
